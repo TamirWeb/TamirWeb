@@ -27,5 +27,6 @@ namespace Tamirci.Models
         [Required(ErrorMessage = "Tamirci tanımını boş bırakmayınız!")]
         public string Tamirci_Tanım { get; set; }
         public ICollection<Yorumlar> Yorumlars { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,0 +1,11 @@
+﻿@using Tamirci.Models
+@model List<Admin>
+<ul class="navbar-nav">
+    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+        @foreach (var x in Model)
+        {
+        <h1 class="welcome-text">Hoşgeldin, <span class="text-black fw-bold">@x.Adminİsim</span></h1>
+        <h3 class="welcome-sub-text">İyi haftalar dileriz!</h3>
+        }
+    </li>
+</ul>

@@ -14,5 +14,6 @@ namespace Tamirci.Models
         public string Baslik { get; set; }
         [Required(ErrorMessage = "Hakkımızda yazısını boş bırakmayınız!")]
         public string HakkımızdaYazısı { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

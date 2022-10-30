@@ -1,0 +1,44 @@
+﻿@model Tamirci.Models.Tamirciler
+@{
+    ViewBag.Title = "AddTamirci";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Yeni Tamirci Ekle</h3>
+
+            @using (Html.BeginForm("AddTamirci", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label for="Name">Tamirci Adı</label> <br />
+                @Html.TextBoxFor(x => x.TamirciAdı, new { @class = "form-control" })
+                <br />
+                <label for="Description">Tamirci Mail Adresi</label> <br />
+                @Html.TextBoxFor(x => x.TamirciMail, new { @class = "form-control"})
+                <br />
+                <label for="Name">Tamirci Telefon Numarası</label> <br />
+                @Html.TextBoxFor(x => x.Tamirci_Telefon, new { @class = "form-control" })
+                <br />
+                <label for="Name">Tamirci İli</label> <br />
+                @Html.TextBoxFor(x => x.Tamirci_İl, new { @class = "form-control" })
+                <br />
+                <label for="Name">Tamirci Adresi</label> <br />
+                @Html.TextAreaFor(x => x.Tamirci_Adres, new { @class = "form-control",style = "height:200px; resize:vertical;" })
+                <br />
+                <label for="Name">Tamirci Tanımı</label> <br />
+                @Html.TextAreaFor(x => x.Tamirci_Tanım, new { @class = "form-control" ,style = "height:200px; resize:vertical;" })
+                <br />
+                <label for="Active">Tamirci Aktifliği</label> <br />
+                <input type="radio" name="Tamirci_Aktiflik" value="true"><label>Aktif</label> <br />
+                <input type="radio" name="Tamirci_Aktiflik" value="false"><label>Pasif</label>
+                <br />
+                <label for="PictureUrl">Proje Resmi</label> <br />
+                <br />
+                <input type="file" name="Tamirci_Fotoğraf" />
+                <button class="btn btn-outline-primary"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Ekle</button>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model Tamirci.Models.Hakkımızda
+@{
+    ViewBag.Title = "GetHakkımızda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hakkımızda Yazısı Güncelle</h4>
+
+
+
+            @using (Html.BeginForm("UpdateHakkımızda", "Admin", FormMethod.Post))
+            {
+                <label for="Vision">Id</label> <br />
+                @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="Vision">Hakkımızda Yazısı Başlığı</label> <br />
+                @Html.TextAreaFor(x => x.Baslik, new { @class = "form-control" })
+                <br />
+                <label for="Vision">Hakkımızda Yazısı</label> <br />
+                @Html.TextAreaFor(x => x.HakkımızdaYazısı, new { @class = "form-control", style = "height:200px; resize:vertical;" })
+                <br />
+                <br />
+                <button class="btn btn-outline-warning"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Güncelle</button>
+            }
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

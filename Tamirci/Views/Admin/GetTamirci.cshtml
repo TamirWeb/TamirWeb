@@ -1,0 +1,93 @@
+﻿@model Tamirci.Models.Tamirciler
+@{
+    ViewBag.Title = "GetTamirci";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tamirci Güncelle</h4>
+
+
+            <form action="/Admin/UpdateTamirci" method="post" enctype="multipart/form-data">
+                <label for="Id">Id</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Id" readonly="readonly" name="Id" value="@Model.ID">
+                <br />
+                <label for="Id">Tamirci Adı</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="TamirciAdı" name="TamirciAdı" value="@Model.TamirciAdı">
+                <br />
+                <label for="Name">Tamirci İli</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Tamirci_İl" name="Tamirci_İl" value="@Model.Tamirci_İl">
+                <br />
+                <label for="Explanation">Tamirci Adres</label>
+                <input class="form-control" type="text" id="Tamirci_Adres" name="Tamirci_Adres" value="@Model.Tamirci_Adres">
+                <br />
+                <label for="PictureUrl">Tamirci Telefon Numarası</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Tamirci_Telefon" name="Tamirci_Telefon" value="@Model.Tamirci_Telefon"> <br />
+                <br />
+                <label for="PictureUrl">Tamirci Mail Adresi</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="TamirciMail" name="TamirciMail" value="@Model.TamirciMail"> <br />
+                <br />
+                <label for="PictureUrl">Tamirci Puan</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Tamirci_Puan" name="Tamirci_Puan" readonly value="@Model.Tamirci_Puan"> <br />
+                <br />
+
+                <label for="Active">Var Olan Tamirci Aktifliği</label>
+                <br />
+                <br />
+                @if (Model.Tamirci_Aktiflik == true)
+                {
+                <input class="form-control" type="text" value="Aktif Tamirci">
+                }
+                else
+                {
+                <input class="form-control" type="text" value="Pasif Tamirci">
+                }
+                <br>
+                @*@Html.TextBoxFor(x => x.Active, new { @class = "form-control" })*@
+                <br />
+                <label>Aktifliği Değiştiriniz</label>
+                <br />
+                <br />
+                @Html.CheckBox("Check1")<span>Aktif</span>
+                <br />
+                <br />
+                @Html.CheckBox("Check2")<span>Pasif</span>
+                <br />
+                <br />
+                <br />
+                <label for="PictureUrl">Tamirci Tanım</label>
+                <br />
+                <br />
+                <textarea class="form-control" id="Tamirci_Tanım" style="width:100%; height:200px;" name="Tamirci_Tanım" >@Model.Tamirci_Tanım</textarea> <br />
+                <br />
+                <label for="PictureUrl">Tamirci Var Olan Foroğraf</label>
+                <br />
+                <br />
+                <input type="image" id="Tamirci_Fotoğraf" width="200" height="200" name="Tamirci_Fotoğraf" src="@Model.Tamirci_Fotoğraf"> <br />
+                <br />
+                <label for="Tamirci_Fotoğraf">Güncellemek için seçiniz.</label>
+                <br />
+                <input class="form-control" type="file" name="Tamirci_Fotoğraf" />
+                <br />
+                <br />
+                <button class="btn btn-outline-warning"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Güncelle</button>
+            </form>
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

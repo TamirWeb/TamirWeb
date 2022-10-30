@@ -23,6 +23,8 @@ namespace Tamirci.Models
         public string AdminİsimKullanıcıAd { get; set; }
         [Required(ErrorMessage = "Admin Şifreyi boş bırakmayınız!")]
         public string Sifre { get; set; }
+        public string Salt { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

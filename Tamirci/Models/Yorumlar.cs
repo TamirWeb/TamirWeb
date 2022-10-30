@@ -20,5 +20,6 @@ namespace Tamirci.Models
         public string Yorumİcerik{ get; set; }
         public string YorumTarih{ get; set; }
         public virtual Tamirciler Tamirci { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

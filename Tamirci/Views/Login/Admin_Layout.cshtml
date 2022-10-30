@@ -1,0 +1,13 @@
+﻿@using Tamirci.Models
+@model List<Admin>
+@{
+    ViewBag.Title = "Admin_Layout";
+    Layout = "";
+}
+
+@foreach (var x in Model)
+{
+    <p class="mb-1 mt-3 font-weight-semibold">@x.Adminİsim</p>
+    <p class="fw-light text-muted mb-0">@x.AdminMail</p>
+}
+

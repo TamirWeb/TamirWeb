@@ -19,5 +19,6 @@ namespace Tamirci.Models
 		public string Mesajbaslik { get; set; }
 		[Required(ErrorMessage = "Mesajınızı boş bırakmayınız!")]
 		public string Mesaj { get; set; }
+		public bool IsDeleted { get; set; }
 	}
 }

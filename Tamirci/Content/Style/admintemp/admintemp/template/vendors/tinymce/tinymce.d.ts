@@ -2828,7 +2828,7 @@ interface TinyMCE extends EditorManager {
         Rect: Rect;
     };
     util: {
-        Promise: PromiseConstructor;
+/*        Promise: PromiseConstructor;*/
         Delay: Delay;
         Tools: Tools;
         VK: VK;
