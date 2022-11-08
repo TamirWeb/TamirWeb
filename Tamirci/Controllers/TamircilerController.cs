@@ -19,5 +19,20 @@ namespace Tamirci.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult TamirciBaşvuru()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult TamirciBaşvuru(Tamirciler a)
+        {
+            a.Tamirci_Aktiflik = false;
+            c.Tamircilers.Add(a);
+            c.SaveChanges();
+            TempData["MesajGonderildi"] = "Başvurunuz bize ulaştı.Uygun görülmesi durumunda Firmanız sayfamızda yer alacaktır.";
+            return View();
+        }
     }
 }
