@@ -1,0 +1,35 @@
+﻿@using Tamirci.Models
+@model List<Mesajlar>
+
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Testimonials</h2>
+            <p>What are they saying</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+                @foreach (var x in Model) {
+                <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <h3>@x.MesajGonderenAdSoyad</h3>
+                            <h4>@x.MesajGonderenMail</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                @x.Mesaj
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- End testimonial item -->
+                }
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->

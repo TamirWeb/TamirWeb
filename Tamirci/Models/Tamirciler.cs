@@ -28,5 +28,6 @@ namespace Tamirci.Models
         public string Tamirci_Tanım { get; set; }
         public ICollection<Yorumlar> Yorumlars { get; set; }
         public bool IsDeleted { get; set; }
+        public int Click { get; set; }
     }
 }

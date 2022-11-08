@@ -1,0 +1,44 @@
+﻿@using Tamirci.Models
+@model List<Tamirciler>
+<section id="popular-courses" class="courses">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <p>En Çok Tıklanan Tamirciler</p>
+        </div>
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            @foreach (var x in Model)
+            {
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="course-item">
+                    <img src="~/Content/Style/İmages/tamir.jpg" class="img-fluid" alt="...">
+                    <div class="course-content">
+                        @*<div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4>@x.TamirciAdı</h4>
+                            <p class="price">@x.TamirciAdı</p>
+                        </div>*@
+
+                        <h3><a href="course-details.html">@x.TamirciAdı</a></h3>
+                        <p>@x.Tamirci_Tanım.Substring(0,10)</p>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                            <div class="trainer-profile d-flex align-items-center">
+                                <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                                <span>@x.TamirciMail</span>
+                            </div>
+                            <div class="trainer-rank d-flex align-items-center">
+                                <i class="bx bx-user"></i>&nbsp;@x.Click
+                                &nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Course Item-->
+            }
+
+
+
+        </div>
+
+    </div>
+</section><!-- End Popular Courses Section -->
