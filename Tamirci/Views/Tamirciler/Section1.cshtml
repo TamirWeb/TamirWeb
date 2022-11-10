@@ -1,0 +1,22 @@
+﻿@using Tamirci.Models
+@model List<Yorumlar>
+<h5 style="text-align:center;" class="post-author_head"><b>Yapılan Yorumlar</b></h5>
+@foreach (var x in Model)
+{
+    <ul class="comment-list">
+
+        <li>
+            <img src="~/Content/Style/İmages/tamir.jpg" class="img-responsive" alt="">
+            <div class="desc">
+
+                <p>@x.GonderenAdSoyad : @x.Yorumİcerik </p>
+
+            </div>
+            <p><i>@x.YorumTarih </i></p>
+            <div class="clearfix"></div>
+
+
+        </li>
+
+    </ul>
+}

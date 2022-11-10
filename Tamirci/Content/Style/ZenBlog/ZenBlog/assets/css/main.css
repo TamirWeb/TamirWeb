@@ -48,10 +48,12 @@ h6 {
 section {
   padding: 40px 0;
   overflow: hidden;
+  background-color:aliceblue;
 }
 
 .section-header {
-  border-bottom: 2px solid var(--color-black);
+    border-bottom: 2px solid var(--color-black);
+    background-color: aliceblue;
 }
 
 .section-header h2 {
@@ -1827,3 +1829,591 @@ section {
     padding: 30px 0;
     color: black;
 }
+    /*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+    .breadcrumbs2 .page-header {
+        padding: 60px 0 60px 0;
+        min-height: 20vh;
+        position: relative;
+        background-color: var(--color-primary);
+    }
+
+        .breadcrumbs2 .page-header h2 {
+            font-size: 56px;
+            font-weight: 500;
+            color: #fff;
+            font-family: var(--font-secondary);
+        }
+
+        .breadcrumbs2 .page-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+    .breadcrumbs2 nav {
+        background-color: #f6f6f6;
+        padding: 20px 0;
+    }
+
+        .breadcrumbs2 nav ol {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-default);
+        }
+
+            .breadcrumbs2 nav ol a {
+                color: var(--color-primary);
+                transition: 0.3s;
+            }
+
+                .breadcrumbs2 nav ol a:hover {
+                    text-decoration: underline;
+                }
+
+            .breadcrumbs2 nav ol li + li {
+                padding-left: 10px;
+            }
+
+                .breadcrumbs2 nav ol li + li::before {
+                    display: inline-block;
+                    padding-right: 10px;
+                    color: var(--color-secondary);
+                    content: "/";
+                }
+/*--------------------------------------------------------------
+# Events
+--------------------------------------------------------------*/
+.events .card {
+    border: 0;
+    padding: 0 30px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.events .card-img {
+    width: calc(100% + 60px);
+    margin-left: -30px;
+    overflow: hidden;
+    z-index: 9;
+    border-radius: 0;
+}
+
+    .events .card-img img {
+        max-width: 100%;
+        transition: all 0.3s ease-in-out;
+    }
+
+.events .card-body {
+    z-index: 10;
+    background: #fff;
+    border-top: 4px solid #fff;
+    padding: 30px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    margin-top: -60px;
+    transition: 0.3s;
+}
+
+.events .card-title {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .events .card-title a {
+        color: #37423b;
+        transition: 0.3s;
+    }
+
+.events .card-text {
+    color: #5e5e5e;
+}
+
+.events .read-more a {
+    color: #777777;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+    .events .read-more a:hover {
+        color: #5fcf80;
+    }
+
+.events .card:hover img {
+    transform: scale(1.1);
+}
+
+.events .card:hover .card-body {
+    border-color: #5fcf80;
+}
+
+    .events .card:hover .card-body .card-title a {
+        color: #5fcf80;
+    }
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details .portfolio-details-slider img {
+    width: 100%;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: var(--color-primary);
+}
+
+.portfolio-details .swiper-button-prev,
+.portfolio-details .swiper-button-next {
+    width: 48px;
+    height: 48px;
+}
+
+    .portfolio-details .swiper-button-prev:after,
+    .portfolio-details .swiper-button-next:after {
+        color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+
+    .portfolio-details .swiper-button-prev:hover:after,
+    .portfolio-details .swiper-button-next:hover:after {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+@media (max-width: 575px) {
+
+    .portfolio-details .swiper-button-prev,
+    .portfolio-details .swiper-button-next {
+        display: none;
+    }
+}
+
+.portfolio-details .portfolio-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+    .portfolio-details .portfolio-info h3:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: var(--color-primary);
+        left: 0;
+        bottom: 0;
+    }
+
+.portfolio-details .portfolio-info ul {
+    list-style: none;
+    padding: 0;
+    font-size: 15px;
+}
+
+    .portfolio-details .portfolio-info ul li {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 15px;
+        font-size: 16px;
+    }
+
+    .portfolio-details .portfolio-info ul strong {
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #9c9c9c;
+        font-size: 12px;
+    }
+
+.portfolio-details .portfolio-info .btn-visit {
+    padding: 8px 40px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+    .portfolio-details .portfolio-info .btn-visit:hover {
+        background: #009d8b;
+    }
+
+.portfolio-details .portfolio-description h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+    padding: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item {
+    padding: 30px 30px 0 30px;
+    position: relative;
+    background: white;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
+    .portfolio-details .portfolio-description .testimonial-item .testimonial-img {
+        width: 90px;
+        border-radius: 50px;
+        border: 6px solid #fff;
+        float: left;
+        margin: 0 10px 0 0;
+    }
+
+    .portfolio-details .portfolio-description .testimonial-item h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 15px 0 5px 0;
+        padding-top: 20px;
+    }
+
+    .portfolio-details .portfolio-description .testimonial-item h4 {
+        font-size: 14px;
+        color: #6c757d;
+        margin: 0;
+    }
+
+    .portfolio-details .portfolio-description .testimonial-item .quote-icon-left,
+    .portfolio-details .portfolio-description .testimonial-item .quote-icon-right {
+        color: #009d8b;
+        font-size: 26px;
+        line-height: 0;
+    }
+
+    .portfolio-details .portfolio-description .testimonial-item .quote-icon-left {
+        display: inline-block;
+        left: -5px;
+        position: relative;
+    }
+
+    .portfolio-details .portfolio-description .testimonial-item .quote-icon-right {
+        display: inline-block;
+        right: -5px;
+        position: relative;
+        top: 10px;
+        transform: scale(-1, -1);
+    }
+
+    .portfolio-details .portfolio-description .testimonial-item p {
+        font-style: italic;
+        margin: 0 0 15px 0 0 0;
+        padding: 0;
+    }
+
+/*--------------------------------------------------------------
+# Doctors
+--------------------------------------------------------------*/
+.doctors {
+    background-color: aliceblue;
+}
+
+    .doctors .member {
+        background-color:#fff;
+        position: relative;
+        box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
+        height:200px;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+        .doctors .member .pic {
+            overflow: hidden;
+          
+            border-radius: 50%;
+        }
+
+            .doctors .member .pic img {
+                transition: ease-in-out 0.3s;
+               
+            }
+
+        .doctors .member:hover img {
+            transform: scale(1.1);
+        }
+
+        .doctors .member .member-info {
+            padding-left: 30px;
+        }
+
+        .doctors .member h4 {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 20px;
+            color: #2c4964;
+        }
+
+        .doctors .member span {
+            display: block;
+            font-size: 15px;
+            padding-bottom: 10px;
+            position: relative;
+            font-weight: 500;
+        }
+
+            .doctors .member span::after {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 50px;
+                height: 1px;
+                background: #b2c8dd;
+                bottom: 0;
+                left: 0;
+            }
+
+        .doctors .member p {
+            margin: 10px 0 0 0;
+            font-size: 1p6x;
+        }
+
+        .doctors .member .social {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+            .doctors .member .social a {
+                transition: ease-in-out 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50px;
+                width: 32px;
+                height: 32px;
+                background: #a0bcd5;
+            }
+
+                .doctors .member .social a i {
+                    color: #fff;
+                    font-size: 16px;
+                    margin: 0 2px;
+                }
+
+                .doctors .member .social a:hover {
+                    background: #1977cc;
+                }
+
+                .doctors .member .social a + a {
+                    margin-left: 8px;
+                }
+ul.comment-list {
+    width: 100%;
+    text-align: justify;
+    border: 1px solid #BAB6B6;
+    padding: 2em;
+    margin: 3em 0;
+    list-style: none;
+}
+
+h5.post-author_head {
+    font-size: 1.3em;
+    color: #848484;
+    margin: 0 0 1em;
+}
+
+    h5.post-author_head a {
+        color: #848484;
+    }
+
+        h5.post-author_head a:hover {
+            color: #00aeff;
+        }
+
+ul.comment-list img {
+    float: left;
+    width: 10%;
+    margin-right: 20px;
+}
+
+.desc p {
+    font-size: 1.2em;
+    color: #848484;
+    margin-top: 1em;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+}
+
+    .desc p a {
+        color: #00aeff;
+        font-family: 'Lato', sans-serif;
+    }
+
+        .desc p a:hover {
+            color: #848484;
+        }
+
+.content-form form input[type="text"], .content-form form textarea {
+    padding: 10px 15px;
+    width: 60%;
+    color: #333;
+    font-size: 1em;
+    border: 1px solid #F6F1DE;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    display: block;
+    margin: 10px 0;
+    text-align:center;
+}
+
+.content-form form textarea {
+    height: 200px;
+    resize: none;
+}
+
+.content-form form input[type="submit"] {
+    color: #fff;
+    background: #00aeff;
+    padding: 0.4em 1.5em;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: inline-block;
+    margin-top: 1em;
+    border: none;
+    outline: none;
+    border: 1px solid #00aeff;
+    transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+}
+
+    .content-form form input[type="submit"]:hover {
+        background: transparent;
+        color: #00aeff;
+    }
+
+.content-form h3 {
+    color: #00aeff;
+    margin-bottom: 1em;
+    text-decoration: none;
+    display: block;
+    font-family: 'Oswald', sans-serif;
+}
+.counts {
+    background: white;
+    padding: 30px 0 40px 0;
+}
+
+    .counts .count-box {
+        padding: 30px 30px 25px 30px;
+        width: 100%;
+        position: relative;
+        text-align: center;
+        background: #fff;
+    }
+
+        .counts .count-box i {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            background: #3498db;
+            padding: 12px;
+            color: #fff;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+        }
+/*--------------------------------------------------------------
+# Our Team Section
+--------------------------------------------------------------*/
+.team .member {
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    overflow: hidden;
+    box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+    height:500px;
+}
+
+    .team .member img {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .team .member .member-content {
+        padding: 0 20px 30px 20px;
+    }
+
+    .team .member h4 {
+        font-weight: 700;
+        margin-top: 16px;
+        margin-bottom: 2px;
+        font-size: 20px;
+    }
+
+    .team .member span {
+        font-style: italic;
+        display: block;
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .team .member p {
+        padding-top: 10px;
+        font-size: 14px;
+        font-style: italic;
+        color: #6c757d;
+    }
+
+    .team .member .social {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+        .team .member .social a {
+            color: #a2a2a2;
+            transition: 0.3s;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #bbbbbb;
+        }
+
+            .team .member .social a:hover {
+                color: var(--color-primary);
+                border-color: var(--color-primary);
+            }
+
+        .team .member .social i {
+            font-size: 18px;
+            margin: 0 2px;
+        }

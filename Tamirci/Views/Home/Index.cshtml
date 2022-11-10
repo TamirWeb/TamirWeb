@@ -5,9 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <main id="main">
-    <h2 style="text-align:center; color:gray;">En Yüksek Puanlı Tamirciler</h2>
+
     <!-- ======= Hero Slider Section ======= -->
     <section id="hero-slider" class="hero-slider">
+        <h2 style="text-align:center; color:gray; ">En Yüksek Puanlı Tamirciler</h2>
         <div class="container-md" data-aos="fade-in">
             <div class="row">
                 <div class="col-12">
@@ -16,12 +17,12 @@
                             @foreach (var x in Model)
                             {
                                 <div class="swiper-slide">
-                                    <img src="~/Content/Style/İmages/tamir.jpg"  class="img-bg d-flex align-items-end">
-                                        <div class="img-bg-inner">
-                                            <h2>@x.TamirciAdı</h2>
-                                            <p>@x.Tamirci_Tanım.Substring(0, 10)</p>
-                                        </div>
-                                    
+                                    <img src="~/Content/Style/İmages/tamir.jpg" style="width:100%;" class="img-lg d-flex align-items-end">
+                                    <div class="img-bg-inner">
+                                        <h2>@x.TamirciAdı</h2>
+                                        <p>@x.Tamirci_Tanım.Substring(0, 50)</p>
+                                    </div>
+
                                 </div>
                             }
                         </div>
@@ -41,8 +42,8 @@
     <!-- ======= Post Grid Section ======= -->
     @Html.Action("Section1", "Home")
     @Html.Action("Section2", "Home")
-    @Html.Action("Section4", "Home")
-    @Html.Action("Section3", "Home")
     @Html.Action("Section5", "Home")
+    @Html.Action("Section4", "Home")
+
     @Html.Action("Section6", "Home")
-    @Html.Action("Section7", "Home")
+    @*@Html.Action("Section7", "Home")*@

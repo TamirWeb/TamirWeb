@@ -1,1 +1,41 @@
-﻿
+﻿@using Tamirci.Models
+@model List<Tamirciler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs" data-aos="fade-in">
+    <div class="container">
+        <h2>Tüm Tamirciler</h2>
+    </div>
+</div><!-- End Breadcrumbs -->
+<!-- ======= Events Section ======= -->
+<section id="doctors" class="doctors">
+    <div class="container">
+        @foreach (var x in Model)
+        {
+            <div class="row">
+
+                <div class="col-lg-10">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="~/Content/Style/İmages/tamir.jpg" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <a href="~/Tamirciler/TamirciDetail/@x.ID"><h4>@x.TamirciAdı</h4></a>
+                            <span>@x.Tamirci_Telefon</span>
+                            <p>@x.Tamirci_Tanım.Substring(0, 19)</p>
+                            @*<div class="social">
+                                <a href=""><i class="ri-twitter-fill"></i></a>
+                                <a href=""><i class="ri-facebook-fill"></i></a>
+                                <a href=""><i class="ri-instagram-fill"></i></a>
+                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        }
+
+        </div>
+</section><!-- End Doctors Section -->

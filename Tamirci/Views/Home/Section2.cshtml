@@ -1,33 +1,94 @@
 ﻿@using Tamirci.Models
 @model List<Tamirciler>
-<section id="stats-counter" class="stats-counter" style="background-image: url(/Content/Style/İmages/tamir.jpg); opacity:0.6;">
-    <div class="container" data-aos="zoom-out">
+<section id="counts" class="counts">
 
-        <div class="row gy-4">
-
-            <div class="col-lg-3 col-md-6">
-                <div class="stats-item text-center w-100 h-100">
-                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Clients</p>
+    <div class="section-title">
+        <h2>Bazı Harika Gerçekler</h2>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="count-box">
+                    <i class="bi bi-emoji-smile"></i>
+                    <h5 data-max="100">+ Kayıtlı Tamirci</h5>
                 </div>
-            </div><!-- End Stats Item -->
+            </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="stats-item text-center w-100 h-100">
-                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Projects</p>
+            <div class="col-lg-3 col-6">
+                <div class="count-box">
+                    <i class="bi bi-chat"></i>
+                    <h5 data-max="25000">+ Yorum</h5>
                 </div>
-            </div><!-- End Stats Item -->
+            </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="stats-item text-center w-100 h-100">
-                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Hours Of Support</p>
+            <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+                <div class="count-box">
+                    <i class="bi bi-arrow-up-circle"></i>
+                    <h5 data-max="10">+ Tıklanma</h5>
                 </div>
-            </div><!-- End Stats Item -->
-
+            </div>
+            <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+                <div class="count-box">
+                    <i class="bi bi-file-earmark-plus"></i>
+                    <h5 data-max="10">+ Firma Başvurusu</h5>
+                </div>
+            </div>
 
         </div>
 
     </div>
-</section><!-- End Stats Counter Section -->
+</section><!-- End Counts Section -->
+
+<script>
+    function inVisible(element) {
+        //Checking if the element is
+        //visible in the viewport
+        var WindowTop = $(window).scrollTop();
+        var WindowBottom = WindowTop + $(window).height();
+        var ElementTop = element.offset().top;
+        var ElementBottom = ElementTop + element.height();
+        //animating the element if it is
+        //visible in the viewport
+        if ((ElementBottom <= WindowBottom) && ElementTop >= WindowTop)
+            animate(element);
+    }
+
+    function animate(element) {
+        //Animating the element if not animated before
+        if (!element.hasClass('ms-animated')) {
+            var maxval = element.data('max');
+            var html = element.html();
+            element.addClass("ms-animated");
+            $({
+                countNum: element.html()
+            }).animate({
+                countNum: maxval
+            }, {
+                //duration 5 seconds
+                duration: 6000,
+                easing: 'linear',
+                step: function () {
+                    element.html(Math.floor(this.countNum) + html);
+                },
+                complete: function () {
+                    element.html(this.countNum + html);
+                }
+            });
+        }
+        //When the document is ready
+        $(function () {
+            //This is triggered when the
+            //user scrolls the page
+            $(window).scroll(function () {
+                //Checking if each items to animate are
+                //visible in the viewport
+                $("h5[data-max]").each(function () {
+                    inVisible($(this));
+                });
+            })
+        });
+
+
+</script>

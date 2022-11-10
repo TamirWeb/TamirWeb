@@ -218,5 +218,10 @@ namespace Tamirci.Controllers
             }
             return RedirectToAction("Hakkımızda");
         }
+        //public PartialViewResult Applications_notices()
+        //{
+        //    var dgr = c.HumanResources.Where(x => x.IsDeleted == false && x.control_information == false).Take(6).ToList();
+        //    return PartialView(dgr);
+        //}
     }
 }
