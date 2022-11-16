@@ -50,23 +50,23 @@
                     <li class="dropdown">
                         <a href="~/Tamirciler/Index"><span>Tamirciler</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
+                            <li><a href="~/Tamirciler/Index"> Tüm Tamirciler</a></li>
                             <li><a href="search-result.html">Otomobil</a></li>
                             <li><a href="search-result.html">Ticari Araç</a></li>
                             <li><a href="search-result.html">Ağır Vasıta</a></li>
-                            <li><a href="#">Tamirciler</a></li>
                             @*<li class="dropdown">
-                                <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>*@
+            <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Drop Down 2</a></li>
+        <li><a href="#">Drop Down 3</a></li>
+        <li><a href="#">Drop Down 4</a></li>*@
                         </ul>
                     </li>
                     <li ><a style="color:darkblue; font-weight:800;" href="~/Tamirciler/TamirciBaşvuru">Firmanızı Bize İletin</a></li>
@@ -86,11 +86,17 @@
 
                 <!-- ======= Search Form ======= -->
                 <div class="search-form-wrap js-search-form-wrap">
-                    <form action="search-result.html" class="search-form">
-                        <span class="icon bi-search"></span>
-                        <input type="text" placeholder="Tamirci Ara" class="form-control">
-                        <button class="btn js-search-close"><span class="bi-x"></span></button>
-                    </form>
+                    <span class="icon bi-search"></span>
+                    <button class="btn js-search-close"><span class="bi-x"></span></button>
+                   
+
+                  
+                        @using (Html.BeginForm("Ara", "Search", FormMethod.Get))
+                        {
+                            @Html.TextBox("k")
+
+                        }
+
                 </div><!-- End Search Form -->
 
             </div>

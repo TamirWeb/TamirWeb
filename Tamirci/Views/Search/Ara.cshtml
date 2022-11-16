@@ -1,10 +1,9 @@
 ﻿@using Tamirci.Models
 @model List<Tamirciler>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Ara";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="breadcrumbs" data-aos="fade-in">
     <div class="container">
         <h2>Tüm Tamirciler</h2>
@@ -20,22 +19,22 @@
                     <h3 class="category-title">Tamirciler</h3>
                     @foreach (var x in Model)
                     {
-                    <div class="d-md-flex post-entry-2 half">
-                        <a href="single-post.html" class="me-4 thumbnail">
-                            <img src="~/Content/Style/İmages/tamir.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date"><span>@x.Tamirci_İl</span></div>
-                            <h3><a href="~/Tamirciler/TamirciDetail/@x.ID">@x.TamirciAdı</a></h3>
-                            <p style="word-break: break-word; display: inline-block; justify-content:center; ">@x.Tamirci_Tanım</p>
-                            <div class="d-flex align-items-center author">
-                                Puan:
-                                <div class="name">
-                                    <h3 class="m-0 p-0">@x.Tamirci_Puan</h3>
+                        <div class="d-md-flex post-entry-2 half">
+                            <a href="single-post.html" class="me-4 thumbnail">
+                                <img src="~/Content/Style/İmages/tamir.jpg" alt="" class="img-fluid">
+                            </a>
+                            <div>
+                                <div class="post-meta"><span class="date"><span>@x.Tamirci_İl</span></div>
+                                <h3><a href="~/Tamirciler/TamirciDetail/@x.ID">@x.TamirciAdı</a></h3>
+                                <p style="word-break: break-word; display: inline-block; justify-content:center; ">@x.Tamirci_Tanım</p>
+                                <div class="d-flex align-items-center author">
+                                    Puan:
+                                    <div class="name">
+                                        <h3 class="m-0 p-0">@x.Tamirci_Puan</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     }
                     <div class="text-start py-4">
                         <div class="custom-pagination">

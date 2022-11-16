@@ -136,6 +136,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TamircilerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2221,6 +2222,8 @@
     <Content Include="Views\Tamirciler\TamirciBaşvuru.cshtml" />
     <Content Include="Views\Tamirciler\Section1.cshtml" />
     <Content Include="Views\Admin\AddYorum.cshtml" />
+    <Content Include="Views\Admin\Başvuru.cshtml" />
+    <Content Include="Views\Search\Ara.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,7 +21,7 @@ namespace Tamirci.Controllers
         [Authorize]
         public ActionResult Tamirci()
         {
-            var dgr = c.Tamircilers.Where(x=>x.IsDeleted==false).ToList();
+            var dgr = c.Tamircilers.Where(x=>x.IsDeleted==false && x.Tamirci_Aktiflik==true).ToList();
             return View(dgr);
         }
         [Authorize]
@@ -98,6 +98,65 @@ namespace Tamirci.Controllers
             }
             return RedirectToAction("Tamirci");
         }
+        [Authorize]
+        public ActionResult Başvuru()
+        {
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik==false).ToList();
+            return View(dgr);
+        }
+        [Authorize]
+        public ActionResult GetBaşvuru(int id)
+        {
+            var deger = c.Tamircilers.Find(id);
+            return View(deger);
+        }
+        [Authorize]
+        public ActionResult UpdateBaşvuru(Tamirciler a, bool check1, bool check2)
+        {
+            var b = c.Tamircilers.Find(a.ID);
+            b.TamirciAdı = a.TamirciAdı;
+            b.TamirciMail = a.TamirciMail;
+            b.Tamirci_Adres = a.Tamirci_Adres;
+            b.Tamirci_İl = a.Tamirci_İl;
+            b.Tamirci_Telefon = a.Tamirci_Telefon;
+            b.Tamirci_Puan = a.Tamirci_Puan;
+            b.Tamirci_Tanım = a.Tamirci_Tanım;
+            if (check1)
+            {
+                b.Tamirci_Aktiflik = true;
+            }
+            if (check2)
+            {
+                b.Tamirci_Aktiflik = false;
+            }
+            if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
+            {
+                string filename = Path.GetFileName(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string path = "~/Content/Style/İmages/" + filename + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(path));
+                a.Tamirci_Fotoğraf = "/Content/Style/İmages/" + filename + uzanti;
+                b.Tamirci_Fotoğraf = a.Tamirci_Fotoğraf;
+            }
+            c.SaveChanges();
+            TempData["AlertMessage"] = "Tamirci Bilgileri Başarı İle Güncellendi";
+            return RedirectToAction("Tamirci", "Başvuru");
+        }
+        public ActionResult RemoveBaşvuru(int id)
+        {
+            var b = c.Tamircilers.Find(id);
+            b.IsDeleted = true;
+            c.SaveChanges();
+            if (b.IsDeleted == true)
+            {
+                TempData["AlertMessage"] = "Tamirci Bilgileri Başarı İle Silindi";
+            }
+            return RedirectToAction("Başvuru");
+        }
+
+
+
+
         [Authorize]
         public ActionResult Yorumlar()
         {
