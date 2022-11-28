@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Tamirci.Models;
+using Tamirci.ViewModel;
 
 namespace Tamirci.Controllers
 {
@@ -30,17 +33,42 @@ namespace Tamirci.Controllers
         {
             return View();
         }
-        [Authorize]
-        [HttpPost]
-        public ActionResult AddTamirci(Tamirciler a)
+        public PartialViewResult Kategori()
         {
-            if (Request.Files.Count > 0)
+            KategoriViewModel model = new KategoriViewModel();
+            List<Kategori> stkurumlistesi = c.Kategoris.ToList();
+            model.Kategorilist = (List<SelectListItem>)(from s in stkurumlistesi
+                                                        select new SelectListItem
+                                                        {
+                                                            Text = s.kategori,
+                                                            Value = s.Id.ToString()
+                                                        }).ToList();
+            model.Kategorilist.Insert(0, new SelectListItem { Text = "Kategori Seçiniz", Value = " ", Selected = true });
+            return PartialView(model);
+        }
+
+       [Authorize]
+        [HttpPost]
+        public ActionResult AddTamirci(Tamirciler a, KategoriViewModel b,İlçeViewModel d)
+        {
+            a.Kategoriid = b.Kategoriid;
+            var dgr1 = c.İls.Find(d.ilid);
+            a.Tamirci_İl = dgr1.Name;
+            var dgr2 = c.İlçes.Find(d.ilçeid);
+            a.Tamirci_İlçe = dgr2.Name;
+            a.control = true;
+            a.TamirciAdı = a.TamirciAdı.ToUpper();
+            if (Request.Files.Count > 0 && Request.Files[0].ContentLength>0)
             {
                 string filename = Path.GetFileName(Request.Files[0].FileName);
                 string uzanti = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Content/Style/İmages/" + filename;
                 Request.Files[0].SaveAs(Server.MapPath(path));
-                a.Tamirci_Fotoğraf = "~/Content/Style/İmages/" + filename;
+                a.Tamirci_Fotoğraf = "/Content/Style/İmages/" + filename;
+            }
+            else
+            {
+                a.Tamirci_Fotoğraf = "/Content/Style/İmages/araba-removebg-preview.png.png";
             }
             a.Tamirci_Puan = 0;
             a.IsDeleted = false;
@@ -52,17 +80,22 @@ namespace Tamirci.Controllers
         [Authorize]
         public ActionResult GetTamirci(int id)
         {
+           
             var deger = c.Tamircilers.Find(id);
+            deger.control = true;
+            c.SaveChanges();
             return View(deger);
         }
         [Authorize]
         public ActionResult UpdateTamirci(Tamirciler a,bool check1, bool check2)
         {
+
             var b = c.Tamircilers.Find(a.ID);
             b.TamirciAdı = a.TamirciAdı;
             b.TamirciMail = a.TamirciMail;
             b.Tamirci_Adres = a.Tamirci_Adres;
             b.Tamirci_İl = a.Tamirci_İl;
+            b.Tamirci_İlçe = a.Tamirci_İlçe;
             b.Tamirci_Telefon = a.Tamirci_Telefon;
             b.Tamirci_Puan = a.Tamirci_Puan;
             b.Tamirci_Tanım = a.Tamirci_Tanım;
@@ -78,9 +111,9 @@ namespace Tamirci.Controllers
             {
                 string filename = Path.GetFileName(Request.Files[0].FileName);
                 string uzanti = Path.GetExtension(Request.Files[0].FileName);
-                string path = "~/Content/Style/İmages/" + filename + uzanti;
+                string path = "~/Content/Style/İmages/" + filename;
                 Request.Files[0].SaveAs(Server.MapPath(path));
-                a.Tamirci_Fotoğraf = "/Content/Style/İmages/" + filename + uzanti;
+                a.Tamirci_Fotoğraf = "/Content/Style/İmages/" + filename;
                 b.Tamirci_Fotoğraf = a.Tamirci_Fotoğraf;
             }
             c.SaveChanges();
@@ -118,6 +151,7 @@ namespace Tamirci.Controllers
             b.TamirciMail = a.TamirciMail;
             b.Tamirci_Adres = a.Tamirci_Adres;
             b.Tamirci_İl = a.Tamirci_İl;
+            b.Tamirci_İlçe = a.Tamirci_İlçe;
             b.Tamirci_Telefon = a.Tamirci_Telefon;
             b.Tamirci_Puan = a.Tamirci_Puan;
             b.Tamirci_Tanım = a.Tamirci_Tanım;
@@ -133,12 +167,37 @@ namespace Tamirci.Controllers
             {
                 string filename = Path.GetFileName(Request.Files[0].FileName);
                 string uzanti = Path.GetExtension(Request.Files[0].FileName);
-                string path = "~/Content/Style/İmages/" + filename + uzanti;
+                string path = "~/Content/Style/İmages/" + filename;
                 Request.Files[0].SaveAs(Server.MapPath(path));
-                a.Tamirci_Fotoğraf = "/Content/Style/İmages/" + filename + uzanti;
+                a.Tamirci_Fotoğraf = "/Content/Style/İmages/" + filename;
                 b.Tamirci_Fotoğraf = a.Tamirci_Fotoğraf;
             }
             c.SaveChanges();
+            if (b.Tamirci_Aktiflik = true)
+            {
+                MailMessage mailim = new MailMessage();
+                string Mail = b.TamirciMail;
+                mailim.To.Add(Mail);
+                mailim.From = new MailAddress("gdelice2244@gmail.com");
+                mailim.Subject = "Yeni bir Durum Güncellemeniz Var.";
+                mailim.IsBodyHtml = true;
+                mailim.Body = "Sayın yetkili, " + "<b>" + a.TamirciAdı + " " + "</b>" + "adlı firma başvuru talebiniz onaylanmıştır.Artık değerli firmanız sayfamızda yer alacaktır.";
+                SmtpClient smtp = new SmtpClient();
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Host = "smtp.gmail.com";
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("gdelice2244@gmail.com", "aqyebzvykbchfffl");
+                try
+                {
+                    smtp.Send(mailim);
+                    TempData["MailYollandı"] = "Mesajınız iletilmiştir. En kısa zamanda size geri dönüş sağlanacaktır.";
+                }
+                catch (Exception ex)
+                {
+                    TempData["MailYollandı"] = "Mesaj gönderilemedi.Hata nedeni:" + ex.Message;
+                }
+            }
             TempData["AlertMessage"] = "Tamirci Bilgileri Başarı İle Güncellendi";
             return RedirectToAction("Tamirci", "Başvuru");
         }
@@ -167,6 +226,8 @@ namespace Tamirci.Controllers
         public ActionResult GetYorum(int id)
         {
             var deger = c.Yorumlars.Find(id);
+            deger.control = true;
+            c.SaveChanges();
             return View(deger);
         }
         [Authorize]
@@ -184,6 +245,31 @@ namespace Tamirci.Controllers
             if (check2)
             {
                 b.Aktiflik = false;
+            }
+            if (b.Aktiflik = true)
+            {
+                MailMessage mailim = new MailMessage();
+                string Mail = a.GonderenMail;
+                mailim.To.Add(Mail);
+                mailim.From = new MailAddress("gdelice2244@gmail.com");
+                mailim.Subject = "Yeni bir Durum Güncellemeniz Var.";
+                mailim.IsBodyHtml = true;
+                mailim.Body = "Sayın yetkili, " + "<b>" + a.GonderenAdSoyad + " " + "</b>" + "ismi ile yaptığınız yorum onaylanmıştır.Yorumunuz sayfamızda yer almaktadır.";
+                SmtpClient smtp = new SmtpClient();
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Host = "smtp.gmail.com";
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("gdelice2244@gmail.com", "aqyebzvykbchfffl");
+                try
+                {
+                    smtp.Send(mailim);
+                    TempData["MailYollandı"] = "Mesajınız iletilmiştir. En kısa zamanda size geri dönüş sağlanacaktır.";
+                }
+                catch (Exception ex)
+                {
+                    TempData["MailYollandı"] = "Mesaj gönderilemedi.Hata nedeni:" + ex.Message;
+                }
             }
             c.SaveChanges();
             TempData["AlertMessage"] = "Yorum Bilgileri Başarı İle Güncellendi";
@@ -277,10 +363,10 @@ namespace Tamirci.Controllers
             }
             return RedirectToAction("Hakkımızda");
         }
-        //public PartialViewResult Applications_notices()
-        //{
-        //    var dgr = c.HumanResources.Where(x => x.IsDeleted == false && x.control_information == false).Take(6).ToList();
-        //    return PartialView(dgr);
-        //}
+        public PartialViewResult Applications_notices()
+        {
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false  && x.Tamirci_Aktiflik==false && x.control==false).Take(6).ToList();
+            return PartialView(dgr);
+        }
     }
 }

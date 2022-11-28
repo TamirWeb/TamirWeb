@@ -17,10 +17,10 @@
                             @foreach (var x in Model)
                             {
                                 <div class="swiper-slide">
-                                    <img src="~/Content/Style/İmages/tamir.jpg" style="width:100%;" class="img-lg d-flex align-items-end">
+                                   <a href="~/Tamirciler/TamirciDetail/@x.ID"> <img  src="@x.Tamirci_Fotoğraf" style="width:100%; height:420px;" class="img-lg d-flex align-items-end"</a>
                                     <div class="img-bg-inner">
                                         <h2>@x.TamirciAdı</h2>
-                                        <p>@x.Tamirci_Tanım.Substring(0, 50)</p>
+                                        <p>@x.Tamirci_Tanım.Substring(0, 10)....</p>
                                     </div>
 
                                 </div>

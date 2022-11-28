@@ -1,0 +1,73 @@
+﻿@model Tamirci.Models.Yorumlar
+@{
+    ViewBag.Title = "GetYorum";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yorum Güncelle</h4>
+
+
+            <form action="/Admin/UpdateYorum" method="post">
+                <label for="Id">Gönderen Ad-Soyad</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Id" readonly="readonly" name="ID" value="@Model.ID">
+                <br />
+                <br />
+                <label for="Id">Gönderen Ad-Soyad</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Id" readonly="readonly" name="GonderenAdSoyad" value="@Model.GonderenAdSoyad">
+                <br />
+                <label for="Id">Gönderen Mail</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="TamirciAdı" name="GonderenMail"" value="@Model.GonderenMail">
+                <br />
+                <label for="Name">Yorum Aktifliği</label>
+                <br />
+                @if (Model.Aktiflik == true)
+                {
+                    <input class="form-control" type="text" value="Aktif Yorum">
+                }
+                else
+                {
+                    <input class="form-control" type="text" value="Pasif Yorum">
+                }
+                <br>
+                @*@Html.TextBoxFor(x => x.Active, new { @class = "form-control" })*@
+                <br />
+                <label>Aktifliği Değiştiriniz</label>
+                <br />
+                <br />
+                @Html.CheckBox("Check1")<span>Aktif</span>
+                <br />
+                <br />
+                @Html.CheckBox("Check2")<span>Pasif</span>
+                <br />
+                <br />
+                <br />
+                <br />
+                <label for="Explanation">Yorum İçeriği</label>
+                <textarea class="form-control" id="Tamirci_Tanım" style="width:100%; height:200px;" name="Yorumİcerik">@Model.Yorumİcerik</textarea> <br />
+                <label for="PictureUrl">Yorum Tarihi</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Tamirci_Telefon" name="YorumTarih" value="@Model.YorumTarih"> <br />
+                <br />
+                <label for="PictureUrl">Yorum Yapılan Tamirci</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="TamirciMail" name="TamirciMail" value="@Model.Tamirci.TamirciAdı" readonly> <br />
+                <br />
+                <br />
+                <button class="btn btn-outline-warning"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Güncelle</button>
+            </form>
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

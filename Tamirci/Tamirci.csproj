@@ -141,6 +141,30 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211272011491_Relations_changed.cs" />
+    <Compile Include="Migrations\202211272011491_Relations_changed.designer.cs">
+      <DependentUpon>202211272011491_Relations_changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211272143045_puan_added.cs" />
+    <Compile Include="Migrations\202211272143045_puan_added.designer.cs">
+      <DependentUpon>202211272143045_puan_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211272145151_puan_tamirci_relations_Added.cs" />
+    <Compile Include="Migrations\202211272145151_puan_tamirci_relations_Added.designer.cs">
+      <DependentUpon>202211272145151_puan_tamirci_relations_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211280554165_il_ilçe_added.cs" />
+    <Compile Include="Migrations\202211280554165_il_ilçe_added.designer.cs">
+      <DependentUpon>202211280554165_il_ilçe_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211281129043_İlçe_tamirci_added.cs" />
+    <Compile Include="Migrations\202211281129043_İlçe_tamirci_added.designer.cs">
+      <DependentUpon>202211281129043_İlçe_tamirci_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Puan.cs" />
+    <Compile Include="Models\İl.cs" />
+    <Compile Include="Models\İlçe.cs" />
+    <Compile Include="ViewModel\KategoriViewModel.cs" />
     <Compile Include="Migrations\202210280806219_salt_added_password.cs" />
     <Compile Include="Migrations\202210280806219_salt_added_password.designer.cs">
       <DependentUpon>202210280806219_salt_added_password.cs</DependentUpon>
@@ -153,13 +177,27 @@
     <Compile Include="Migrations\202211072124569_Click_added_Tamirci.designer.cs">
       <DependentUpon>202211072124569_Click_added_Tamirci.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211230918128_control_information_added.cs" />
+    <Compile Include="Migrations\202211230918128_control_information_added.designer.cs">
+      <DependentUpon>202211230918128_control_information_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211231923085_Kategori_added..cs" />
+    <Compile Include="Migrations\202211231923085_Kategori_added..designer.cs">
+      <DependentUpon>202211231923085_Kategori_added..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211240658495_control_information_added1.cs" />
+    <Compile Include="Migrations\202211240658495_control_information_added1.designer.cs">
+      <DependentUpon>202211240658495_control_information_added1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Hakkımızda.cs" />
+    <Compile Include="Models\Kategori.cs" />
     <Compile Include="Models\Tamirciler.cs" />
     <Compile Include="Models\Yorumlar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\İlçeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -1815,7 +1853,9 @@
     <Content Include="Content\Style\ZenBlog\ZenBlog\single-post.html" />
     <Content Include="Content\Style\İmages\like.jpg" />
     <Content Include="Content\Style\İmages\logo.png" />
+    <Content Include="Content\Style\İmages\profil.png" />
     <Content Include="Content\Style\İmages\tamir.jpg" />
+    <Content Include="Content\Style\İmages\tamirarkaplan.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2224,6 +2264,15 @@
     <Content Include="Views\Admin\AddYorum.cshtml" />
     <Content Include="Views\Admin\Başvuru.cshtml" />
     <Content Include="Views\Search\Ara.cshtml" />
+    <Content Include="Views\Tamirciler\Oto.cshtml" />
+    <Content Include="Views\Tamirciler\Motor.cshtml" />
+    <Content Include="Views\Tamirciler\Yorumekle.cshtml" />
+    <Content Include="Views\Admin\GetYorum.cshtml" />
+    <Content Include="Views\Admin\GetBaşvuru.cshtml" />
+    <Content Include="Views\Home\Puanlama1.cshtml" />
+    <Content Include="Views\Home\Puanlama2.cshtml" />
+    <Content Include="Views\Tamirciler\İlİlçe.cshtml" />
+    <Content Include="Views\Admin\Kategori.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2256,6 +2305,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211072124569_Click_added_Tamirci.resx">
       <DependentUpon>202211072124569_Click_added_Tamirci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211230918128_control_information_added.resx">
+      <DependentUpon>202211230918128_control_information_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211231923085_Kategori_added..resx">
+      <DependentUpon>202211231923085_Kategori_added..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211240658495_control_information_added1.resx">
+      <DependentUpon>202211240658495_control_information_added1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211272011491_Relations_changed.resx">
+      <DependentUpon>202211272011491_Relations_changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211272143045_puan_added.resx">
+      <DependentUpon>202211272143045_puan_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211272145151_puan_tamirci_relations_Added.resx">
+      <DependentUpon>202211272145151_puan_tamirci_relations_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211280554165_il_ilçe_added.resx">
+      <DependentUpon>202211280554165_il_ilçe_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211281129043_İlçe_tamirci_added.resx">
+      <DependentUpon>202211281129043_İlçe_tamirci_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

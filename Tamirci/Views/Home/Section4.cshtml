@@ -11,15 +11,15 @@
             @foreach (var x in Model)
             {
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                <div class="course-item">
-                    <img src="~/Content/Style/İmages/tamir.jpg" class="img-fluid" alt="...">
+                <div class="course-item" style="width:100%;">
+                    <a href="~/Tamirciler/TamirciDetail/@x.ID"><img src="@x.Tamirci_Fotoğraf" class="img-fluid" style="width:100%; height:180px;" alt="@x.TamirciAdı"></a>
                     <div class="course-content">
                         @*<div class="d-flex justify-content-between align-items-center mb-3">
                             <h4>@x.TamirciAdı</h4>
                             <p class="price">@x.TamirciAdı</p>
                         </div>*@
 
-                        <h3><a href="course-details.html">@x.TamirciAdı</a></h3>
+                        <h3><a href="~/Tamirciler/TamirciDetail/@x.ID">@x.TamirciAdı</a></h3>
                         <p>@x.Tamirci_Tanım.Substring(0,10)</p>
                         <div class="trainer d-flex justify-content-between align-items-center">
                             <div class="trainer-profile d-flex align-items-center">
@@ -27,7 +27,7 @@
                                 <span>@x.TamirciMail</span>
                             </div>
                             <div class="trainer-rank d-flex align-items-center">
-                                <i class="bx bx-user"></i>&nbsp;@x.Click
+                                <i class="bi bi-mouse2"></i>&nbsp;@x.Click
                                 &nbsp;&nbsp;
                             </div>
                         </div>

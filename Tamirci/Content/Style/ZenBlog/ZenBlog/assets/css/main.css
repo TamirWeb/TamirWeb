@@ -1822,11 +1822,12 @@ section {
         font-weight: 600;
         color: #37423b;
     }
+
 .breadcrumbs {
     margin-top: 73px;
     text-align: center;
     background-color:lightgrey;
-    padding: 30px 0;
+    padding: 15px 0;
     color: black;
 }
     /*--------------------------------------------------------------
@@ -1834,7 +1835,7 @@ section {
 --------------------------------------------------------------*/
     .breadcrumbs2 .page-header {
         padding: 60px 0 60px 0;
-        min-height: 20vh;
+        height: 2vh;
         position: relative;
         background-color: var(--color-primary);
     }
@@ -1842,7 +1843,7 @@ section {
         .breadcrumbs2 .page-header h2 {
             font-size: 56px;
             font-weight: 500;
-            color: #fff;
+            color: black;
             font-family: var(--font-secondary);
         }
 

@@ -26,6 +26,11 @@
                 <br />
                 <input class="form-control" type="text" id="Tamirci_İl" name="Tamirci_İl" value="@Model.Tamirci_İl">
                 <br />
+                <label for="Name">Tamirci İlçe</label>
+                <br />
+                <br />
+                <input class="form-control" type="text" id="Tamirci_İl" name="Tamirci_İl" value="@Model.Tamirci_İlçe">
+                <br />
                 <label for="Explanation">Tamirci Adres</label>
                 <input class="form-control" type="text" id="Tamirci_Adres" name="Tamirci_Adres" value="@Model.Tamirci_Adres">
                 <br />
@@ -50,11 +55,11 @@
                 <br />
                 @if (Model.Tamirci_Aktiflik == true)
                 {
-                <input class="form-control" type="text" value="Aktif Tamirci">
+                    <input class="form-control" type="text" value="Aktif Tamirci">
                 }
                 else
                 {
-                <input class="form-control" type="text" value="Pasif Tamirci">
+                    <input class="form-control" type="text" value="Pasif Tamirci">
                 }
                 <br>
                 @*@Html.TextBoxFor(x => x.Active, new { @class = "form-control" })*@
@@ -72,12 +77,13 @@
                 <label for="PictureUrl">Tamirci Tanım</label>
                 <br />
                 <br />
-                <textarea class="form-control" id="Tamirci_Tanım" style="width:100%; height:200px;" name="Tamirci_Tanım" >@Model.Tamirci_Tanım</textarea> <br />
+                <textarea class="form-control" id="Tamirci_Tanım" style="width:100%; height:200px;" name="Tamirci_Tanım">@Model.Tamirci_Tanım</textarea> <br />
                 <br />
                 <label for="PictureUrl">Tamirci Var Olan Foroğraf</label>
                 <br />
                 <br />
-                <input type="image" id="Tamirci_Fotoğraf" width="200" height="200" name="Tamirci_Fotoğraf" src="@Model.Tamirci_Fotoğraf"> <br />
+                <img width="200" height="200" name="Tamirci_Fotoğraf" alt="@Model.TamirciAdı" src="@Model.Tamirci_Fotoğraf" />
+                <br />
                 <br />
                 <label for="Tamirci_Fotoğraf">Güncellemek için seçiniz.</label>
                 <br />

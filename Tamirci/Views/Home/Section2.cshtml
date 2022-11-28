@@ -1,94 +1,91 @@
 ﻿@using Tamirci.Models
 @model List<Tamirciler>
-<section id="counts" class="counts">
+<br />
+<br />
 
-    <div class="section-title">
-        <h2>Bazı Harika Gerçekler</h2>
-    </div>
-    <br />
-    <br />
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <div class="count-box">
-                    <i class="bi bi-emoji-smile"></i>
-                    <h5 data-max="100">+ Kayıtlı Tamirci</h5>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="count-box">
-                    <i class="bi bi-chat"></i>
-                    <h5 data-max="25000">+ Yorum</h5>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6 mt-5 mt-lg-0">
-                <div class="count-box">
-                    <i class="bi bi-arrow-up-circle"></i>
-                    <h5 data-max="10">+ Tıklanma</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 mt-5 mt-lg-0">
-                <div class="count-box">
-                    <i class="bi bi-file-earmark-plus"></i>
-                    <h5 data-max="10">+ Firma Başvurusu</h5>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section><!-- End Counts Section -->
-
-<script>
-    function inVisible(element) {
-        //Checking if the element is
-        //visible in the viewport
-        var WindowTop = $(window).scrollTop();
-        var WindowBottom = WindowTop + $(window).height();
-        var ElementTop = element.offset().top;
-        var ElementBottom = ElementTop + element.height();
-        //animating the element if it is
-        //visible in the viewport
-        if ((ElementBottom <= WindowBottom) && ElementTop >= WindowTop)
-            animate(element);
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .counter {
+        background-color: #eaecf0;
+        text-align: center;
     }
 
-    function animate(element) {
-        //Animating the element if not animated before
-        if (!element.hasClass('ms-animated')) {
-            var maxval = element.data('max');
-            var html = element.html();
-            element.addClass("ms-animated");
-            $({
-                countNum: element.html()
-            }).animate({
-                countNum: maxval
-            }, {
-                //duration 5 seconds
-                duration: 6000,
-                easing: 'linear',
-                step: function () {
-                    element.html(Math.floor(this.countNum) + html);
-                },
-                complete: function () {
-                    element.html(this.countNum + html);
-                }
-            });
-        }
-        //When the document is ready
-        $(function () {
-            //This is triggered when the
-            //user scrolls the page
-            $(window).scroll(function () {
-                //Checking if each items to animate are
-                //visible in the viewport
-                $("h5[data-max]").each(function () {
-                    inVisible($(this));
-                });
-            })
+    .employees, .customer, .design, .order {
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+
+    .counter-count {
+        font-size: 18px;
+        background-color: #00b3e7;
+        border-radius: 50%;
+        position: relative;
+        color: #ffffff;
+        text-align: center;
+        line-height: 92px;
+        width: 92px;
+        height: 92px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        display: inline-block;
+    }
+
+    .employee-p, .customer-p, .order-p, .design-p {
+        font-size: 24px;
+        color: #000000;
+        line-height: 34px;
+    }
+</style>
+<div class="section-title">
+    <h2>Bazı Harika Gerçekler</h2>
+</div>
+<div class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="employees">
+                    <p class="counter-count">200</p>
+                    <p class="employee-p">Tamirci</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="customer">
+                    <p class="counter-count">100</p>
+                    <p class="customer-p">Yorum</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="design">
+                    <p class="counter-count">200</p>
+                    <p class="design-p">Puanlama</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="order">
+                    <p class="counter-count">1000</p>
+                    <p class="order-p">Tıklanma</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.counter-count').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 5000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
         });
-
-
+    });
 </script>

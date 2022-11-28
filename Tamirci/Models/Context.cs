@@ -12,5 +12,9 @@ namespace Tamirci.Models
         public DbSet<Hakkımızda> Hakkımızdas { get; set; }
         public DbSet<Mesajlar> Mesajlars { get; set; }
         public DbSet<Tamirciler> Tamircilers { get; set; }
+        public DbSet<Kategori>Kategoris { get; set; }
+        public DbSet<Puan> Puans { get; set; }
+        public DbSet<İl> İls { get; set; }
+        public DbSet<İlçe> İlçes { get; set; }
     }
 }

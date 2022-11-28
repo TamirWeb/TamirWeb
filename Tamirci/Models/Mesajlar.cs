@@ -20,5 +20,6 @@ namespace Tamirci.Models
 		[Required(ErrorMessage = "Mesajınızı boş bırakmayınız!")]
 		public string Mesaj { get; set; }
 		public bool IsDeleted { get; set; }
+		public bool control{ get; set; }
 	}
 }

@@ -38,7 +38,7 @@
                                     <td>@x.MesajGonderenAdSoyad</td>
                                     <td>@x.MesajGonderenMail</td>
                                     <td>@x.Mesajbaslik</td>
-                                    <td>@x.Mesaj</td>
+                                    <td>@x.Mesaj.Substring(0,15)...</td>
                                     <td>
                                         <a href="\Admin\GetTamirci\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-table-edit"></i>&nbsp;&nbsp;Detayı Gör</a>
                                         <a href="\Admin\RemoveTamirci\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>

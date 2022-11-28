@@ -36,45 +36,78 @@
                         <tbody>
                             @foreach (var x in Model)
                             {
-                                <tr>
-                                    <td>@x.GonderenAdSoyad</td>
-                                    <td>@x.GonderenMail</td>
-                                    <td>@x.Aktiflik</td>
-                                    <td>@x.Yorumİcerik</td>
-                                    <td>@x.YorumTarih</td>
-                                    <td>@x.Tamirci.TamirciAdı</td>
-                                    <td>
-                                        <a href="\Admin\GetYorum\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-table-edit"></i>&nbsp;&nbsp;Güncelle </a>
-                                        <a href="\Admin\RemoveYorum\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>
-                                    </td>
+                                if (x.control == false)
+                                {
+                                    <tr>
+                                        <td><b>@x.GonderenAdSoyad</b></td>
+                                        <td><b>@x.GonderenMail</b></td>
+                                        @if (x.Aktiflik == true)
+                                        {
+                                            <td><b>Aktif Yorum</b></td>
+                                        }
+                                        else
+                                        {
+                                            <td><b>Pasif Yorum</b></td>
+                                        }
+                                        <td><b>@x.Yorumİcerik</b></td>
+                                        <td><b>@x.YorumTarih</b></td>
+                                        <td><b>@x.Tamirci.TamirciAdı</b></td>
+                                        <td>
+                                            <a href="\Admin\GetYorum\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-table-edit"></i>&nbsp;&nbsp;Güncelle </a>
+                                            <a href="\Admin\RemoveYorum\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>
+                                        </td>
 
-                                </tr>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@x.GonderenAdSoyad</td>
+                                        <td>@x.GonderenMail</td>
+                                        @if (x.Aktiflik == true)
+                                        {
+                                            <td>Aktif Yorum</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Pasif Yorum</td>
+                                        }
+                                        <td>@x.Yorumİcerik</td>
+                                        <td>@x.YorumTarih</td>
+                                        <td>@x.Tamirci.TamirciAdı</td>
+                                        <td>
+                                            <a href="\Admin\GetYorum\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-table-edit"></i>&nbsp;&nbsp;Güncelle </a>
+                                            <a href="\Admin\RemoveYorum\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>
+                                        </td>
+
+                                    </tr>
+                                }
                             }
 
                             @*<tr>
-                                    <td>Messsy</td>
-                                    <td>Flash</td>
-                                    <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
-                                    <td><label class="badge badge-warning">In progress</label></td>
-                                </tr>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Premier</td>
-                                    <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
-                                    <td><label class="badge badge-info">Fixed</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Peter</td>
-                                    <td>After effects</td>
-                                    <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
-                                    <td><label class="badge badge-success">Completed</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Dave</td>
-                                    <td>53275535</td>
-                                    <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
-                                    <td><label class="badge badge-warning">In progress</label></td>
-                                </tr>*@
+            <td>Messsy</td>
+            <td>Flash</td>
+            <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
+            <td><label class="badge badge-warning">In progress</label></td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Premier</td>
+            <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
+            <td><label class="badge badge-info">Fixed</label></td>
+        </tr>
+        <tr>
+            <td>Peter</td>
+            <td>After effects</td>
+            <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
+            <td><label class="badge badge-success">Completed</label></td>
+        </tr>
+        <tr>
+            <td>Dave</td>
+            <td>53275535</td>
+            <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
+            <td><label class="badge badge-warning">In progress</label></td>
+        </tr>*@
                         </tbody>
                     </table>
                 </div>

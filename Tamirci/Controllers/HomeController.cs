@@ -37,7 +37,7 @@ namespace Tamirci.Controllers
         }
         public PartialViewResult Section4()
         {
-            var dgr = c.Tamircilers.OrderByDescending(x=>x.Click).Where(x => x.IsDeleted == false).Take(6).ToList();
+            var dgr = c.Tamircilers.OrderByDescending(x=>x.Click).Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik==true).Take(6).ToList();
             return PartialView(dgr);
         }
         public PartialViewResult Section5()
@@ -53,6 +53,37 @@ namespace Tamirci.Controllers
         {
             var dgr = c.Mesajlars.Where(x => x.IsDeleted == false).Take(6).ToList();
             return PartialView(dgr);
+        }
+        [HttpGet]
+        public PartialViewResult Puanlama1(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult Puanlama1(Puan a)
+        {
+            a.Tamirciid = a.Tamirciid;
+            a.Durum = true;
+            c.Puans.Add(a);
+            c.SaveChanges();
+            return PartialView();
+        }
+
+        [HttpGet]
+        public PartialViewResult Puanlama2(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult Puanlama2(Puan a)
+        {
+            a.Tamirciid = a.Tamirciid;
+            a.Durum = false;
+            c.Puans.Add(a);
+            c.SaveChanges();
+            return PartialView();
         }
     }
 }

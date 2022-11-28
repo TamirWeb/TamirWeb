@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="form-group">
+    <h3>Yorum Yapın</h3>
+
+    <form method="post">
+        <input placeholder="ID" name="Tamirciid" required value="@ViewBag.deger" type="hidden" readonly="readonly" />
+        <br />
+
+        <input type="text" class="form-control" placeholder="Ad-Soyad Giriniz." name="GonderenAdSoyad" required />
+        <br />
+
+        <input type="text" class="form-control" placeholder="Mailinizi Giriniz." name="GonderenMail" required />
+        <br />
+
+        <input type="date" class="form-control" placeholder="Tarih" name="YorumTarih"  />
+        <br />
+
+        <textarea placeholder="Yorumunuzu Giriniz." class="form-control" name="Yorumİcerik" required></textarea>
+        <br />
+        <input type="submit" name="formyorum" value="GÖNDER" />
+    </form>
+</div>

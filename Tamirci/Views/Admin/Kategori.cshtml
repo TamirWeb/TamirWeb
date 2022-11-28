@@ -1,0 +1,7 @@
+﻿@model Tamirci.ViewModel.KategoriViewModel
+<label for="Name">Tamir Kategorisi Seçiniz</label>
+<br />
+<br />
+<div class="form-group mt-3">
+    @Html.DropDownListFor(model => model.Kategoriid, Model.Kategorilist, new { @class = "form-control", @id = "kategori" })
+</div>

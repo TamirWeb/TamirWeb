@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Tamirci.ViewModel.KategoriViewModel
+@{
     ViewBag.Title = "TamirciBaşvuru";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -21,18 +22,15 @@
                 </div>
             }
             <div class="form mt-5">
-                <form id="contact" action="/Tamirciler/TamirciBaşvuru" method="post">
+                <form id="contact" action="/Tamirciler/TamirciBaşvuru" method="post" enctype="multipart/form-data">
                     <label for="Name">Firmanızın Adı</label> <br />
                     <div class="form-group mt-3">
                         <input type="text" class="form-control" name="TamirciAdı" id="subject" placeholder="Firmanızın Adı" autofocus required>
                     </div>
-                    <label for="Name">Firmanın Bulunduğu İl</label> <br />
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" minlength="2" maxlength="40" name="Tamirci_İl" id="subject" placeholder="Firmanın Bulunduğu İl" required>
-                    </div>
+                    @Html.Action("İlİlçe", "Tamirciler")
                     <label for="Name">Firma Adres</label> <br />
                     <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="Tamirci_Adres" minlength="2" maxlength="100" id="subject" placeholder="Firma Adres" required>
+                        <textarea class="form-control" name="Tamirci_Adres" rows="7" minlength="20" maxlength="2000" placeholder="Firma Adres" required></textarea>
                     </div>
                     <label for="Name">Firma Telefon</label> <br />
                     <div class="form-group mt-3">
@@ -47,21 +45,59 @@
                         <textarea class="form-control" name="Tamirci_Tanım" rows="7" minlength="20" maxlength="2000" placeholder="Firma Açıklaması" required></textarea>
                     </div>
                     <br />
+                    <label for="Name">Tamir Kategorisi Seçiniz</label> <br />
                     <br />
+                    <div class="form-group mt-3">
+                        @Html.DropDownListFor(model => model.Kategoriid, Model.Kategorilist, new { @class = "form-control", @id = "kategori" })
+                    </div>
+            </div>
+            <br />
+            <br />
+            <input class=" form-control" type="file" name="Tamirci_Fotoğraf" />
+            <br />
+            <br />
 
+            <button class="btn btn-primary" name="submit" type="submit" id="submit">GÖNDER</button>
 
-                    <button class="btn btn-primary" name="submit" type="submit" id="submit">GÖNDER</button>
+            </form>
 
-                </form>
-
-            </div><!-- End Contact Form -->
-
+        </div><!-- End Contact Form -->
         </div>
     </section>
 </body>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <script>
     function kapat() {
         setTimeout("document.getElementById('dv1').style.display = 'none'", 3000);
     }
+    $(document).ready(function () {
+        $("#kategori").select2();
+        $("#ilid").select2();
+        $("#ilçe").select2();
+        $("#ilid").change(function () {
+            var id = $(this).val();
+            console.log(id);
+            var ilçelist = $("#ilçe");
+            ilçelist.empty();
+            $.ajax({
+                url: '/Tamirciler/GetInstitution/',
+                type: 'POST',
+                dataType: 'json',
+                data: { 'id': id },
+                success: function (data) {
+                    $.each(data, function (index, option) {
+
+                        ilçelist.append('<option value=' + data[index].Value + '>' + data[index].Text + '</option > ');
+                    });
+                    /* kurumlist.append('<option value=' + data[0].Value + '>' + data[0].Text + '</option > ');*/
+
+                }
+            });
+
+        });
+    });
 </script>
 

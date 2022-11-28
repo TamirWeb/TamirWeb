@@ -19,7 +19,9 @@ namespace Tamirci.Models
         [Required(ErrorMessage = "Yorum içeriğini boş bırakmayınız!")]
         public string Yorumİcerik{ get; set; }
         public string YorumTarih{ get; set; }
+        public int Tamirciid { get; set; }
         public virtual Tamirciler Tamirci { get; set; }
         public bool IsDeleted { get; set; }
+        public bool control { get; set; }
     }
 }

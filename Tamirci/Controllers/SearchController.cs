@@ -13,12 +13,13 @@ namespace Tamirci.Controllers
 
             public ActionResult Ara(String k)
             {
+            var search= k.ToUpper();
 
                 var deger = c.Tamircilers.ToList();
 
                 if (!string.IsNullOrEmpty(k))
                 {
-                    deger = deger.Where(a => a.TamirciAdı.Contains(k)).ToList();
+                    deger = deger.Where(a => a.TamirciAdı.Contains(search) && a.Tamirci_Aktiflik == true).ToList();
                 }
                 return View(deger);
 

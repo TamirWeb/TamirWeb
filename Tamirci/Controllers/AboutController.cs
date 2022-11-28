@@ -19,6 +19,7 @@ namespace Tamirci.Controllers
         [HttpPost]
         public ActionResult Index(Mesajlar a)
         {
+            a.control = false;
             c.Mesajlars.Add(a);
             c.SaveChanges();
             TempData["MesajGonderildi"] = "Başarı!Mesajınız Bize Ulaştı.En Kısa sürede değerlendirilecektir.Vakit ayırdığınız için teşekkürler:)";

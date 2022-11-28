@@ -43,27 +43,26 @@ namespace Tamirci.Controllers
             }
 
         }
-        [Authorize]
+ 
         public ActionResult MyProfile()
         {
             string session = Session["AdminİsimKullanıcıAd"].ToString();
             var dgr = c.Admins.Where(x => x.AdminİsimKullanıcıAd == session).Take(1).ToList();
             return View(dgr);
         }
-        [Authorize]
-        [Authorize]
+    
         public ActionResult GetMyProfile(int id)
         {
             var deger = c.Admins.Find(id);
             return View(deger);
         }
-        [Authorize]
+      
         [HttpGet]
         public ActionResult AddAdmin()
         {
             return View();
         }
-        [Authorize]
+      
         [HttpPost]
         public ActionResult AddAdmin(Admin admin)
         {

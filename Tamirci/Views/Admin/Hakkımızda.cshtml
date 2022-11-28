@@ -35,7 +35,7 @@
                             {
                                 <tr>
                                     <td>@x.Baslik</td>
-                                    <td>@x.HakkımızdaYazısı</td>
+                                    <td>@x.HakkımızdaYazısı.Substring(0,45)...</td>
                                     <td>
                                         <a href="\Admin\GetHakkımızda\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-table-edit"></i>&nbsp;&nbsp;Güncelle </a>
                                         <a href="\Admin\RemoveHakkımızda\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>

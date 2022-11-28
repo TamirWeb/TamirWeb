@@ -9,7 +9,7 @@
 
     
     <div class="breadcrumbs2">
-        <div class="page-header d-flex align-items-center" style="background-image: url('');">
+        <div class="page-header d-flex align-items-center" style="background-image: url('/Content/Style/İmages/tamirarkaplan.jpeg');">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6 text-center">
@@ -30,36 +30,21 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
         <div class="container" data-aos="fade-up">
-
+              @foreach (var x in Model)
+            {
             <div class="position-relative h-100">
                 <div class="slides-1 portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
 
                         <div class="swiper-slide">
-                            <img src="~/Content/Style/İmages/tamir.jpg" alt="">
+                            <img src="@x.Tamirci_Fotoğraf" style="height:450px; width:100%;" alt="@x.TamirciAdı">
                         </div>
-
-                        <div class="swiper-slide">
-                            <img src="~/Content/Style/İmages/tamir.jpg" alt="">
-                        </div>
-
-                        <div class="swiper-slide">
-                            <img src="~/Content/Style/İmages/tamir.jpg" alt="">
-                        </div>
-
-                        <div class="swiper-slide">
-                            <img src="~/Content/Style/İmages/tamir.jpg" alt="">
-                        </div>
-
                     </div>
-                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+             
 
             </div>
-            @foreach (var x in Model)
-            {
+          
                 <div class="row justify-content-between gy-4 mt-4">
 
                     <div class="col-lg-8">
@@ -68,14 +53,20 @@
                             <p style="justify-content: center; word-wrap: break-word;">
                                 @x.Tamirci_Tanım
                             </p>
-                           
+                            <br />
+                            @Html.Action("Puanlama1", "Home")
+                            @Html.Action("Puanlama2", "Home")
+
                         </div>
+
                     </div>
 
                     <div class="col-lg-3">
                         <div class="portfolio-info">
                             <h3>Tamirci Bilgileri</h3>
                             <ul>
+                                <li><strong>İl</strong> <span>@x.Tamirci_İl</span></li>
+                                <li><strong>İlçe</strong> <span>@x.Tamirci_İlçe</span></li>
                                 <li><strong>Adres</strong> <span>@x.Tamirci_Adres</span></li>
                                 <li><strong>Telefon</strong> <span>@x.Tamirci_Telefon</span></li>
                                 <li><strong>E-Mail</strong> <span>@x.TamirciMail</span></li>
@@ -96,7 +87,7 @@
                 <br />
                 <br />
                 <br />
-                @*@Html.Action("YorumEkle", "Tamirciler")*@
+                @Html.Action("YorumEkle", "Tamirciler")
             </div>
 </section><!-- End Portfolio Details Section -->
 

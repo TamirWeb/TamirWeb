@@ -13,7 +13,7 @@
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                 <div class="chef-member">
                     <div class="member-img">
-                        <img src="~/Content/Style/İmages/tamir.jpg" class="img-fluid" alt="">
+                        <a href="~/Tamirciler/TamirciDetail/@x.ID"><img src="@x.Tamirci_Fotoğraf" class="img-fluid" style="height:230px; width:100%;" alt="@x.TamirciAdı"></a>
                         <div class="social">
                             <a href=""><i class="bi bi-twitter"></i></a>
                             <a href=""><i class="bi bi-facebook"></i></a>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="member-info">
-                        <h4>@x.TamirciAdı</h4>
+                       <a href="~/Tamirciler/TamirciDetail/@x.ID"><h4>@x.TamirciAdı</h4></a> 
                         <span>@x.TamirciMail</span>
                         <p>@x.Tamirci_Tanım</p>
                     </div>
