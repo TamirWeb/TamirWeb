@@ -18,16 +18,26 @@ namespace Tamirci.Controllers
         public void Calculate()
         {
             var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).ToList();
-            int count = c.Puans.Count();
+            int count = 0;
             int count1 = 0;
             int count2 = 0;
             foreach (var k in dgr)
             {
+                count = c.Puans.Where(x => x.Tamirciid == k.ID).Count();
                 count1 = c.Puans.Where(x => x.Durum == true && x.Tamirciid==k.ID).Count();
                 count2 = c.Puans.Where(x => x.Durum == false && x.Tamirciid == k.ID).Count();
-                k.Tamirci_Puan = ((count1 * 5) - (count2 * 3)) / count;
+                if (count != 0)
+                {
+                    k.Tamirci_Puan = ((count1 * 6) - (count2 * 2)) / count;
+                }
+
+               else
+                {
+                    k.Tamirci_Puan = 0;
+                }
                 count1 = 0;
                 count2 = 0;
+                count = 0;
                 c.SaveChanges();
             }
         }
@@ -39,11 +49,13 @@ namespace Tamirci.Controllers
         }
         public ActionResult Oto()
         {
+            Calculate();
             var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid==1).ToList();
             return View(dgr);
         }
         public ActionResult Motor()
         {
+            Calculate();
             var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid == 2).ToList();
             return View(dgr);
         }

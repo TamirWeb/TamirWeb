@@ -31,5 +31,20 @@ namespace Tamirci.Controllers
             var dgr = c.Hakkımızdas.Where(x => x.IsDeleted == false).Take(1).ToList();
             return PartialView(dgr);
         }
+        [HttpGet]
+        public PartialViewResult Puanlama2(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult Puanlama2(Puan a)
+        {
+            a.Tamirciid = a.Tamirciid;
+            a.Durum = false;
+            c.Puans.Add(a);
+            c.SaveChanges();
+            return PartialView();
+        }
     }
 }

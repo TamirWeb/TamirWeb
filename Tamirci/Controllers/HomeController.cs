@@ -70,20 +70,6 @@ namespace Tamirci.Controllers
             return PartialView();
         }
 
-        [HttpGet]
-        public PartialViewResult Puanlama2(int id)
-        {
-            ViewBag.deger = id;
-            return PartialView();
-        }
-        [HttpPost]
-        public PartialViewResult Puanlama2(Puan a)
-        {
-            a.Tamirciid = a.Tamirciid;
-            a.Durum = false;
-            c.Puans.Add(a);
-            c.SaveChanges();
-            return PartialView();
-        }
+       
     }
 }
