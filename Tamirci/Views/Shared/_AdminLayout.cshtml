@@ -63,7 +63,22 @@
                             <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                         </form>
                     </li>
+                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="dropdown-item-icon mdi mdi-bell text-primary me-2"></i>
+                        </a>
 
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <div class="dropdown-header text-center">
+                                @*<img class="img-md" src="~/Content/Style/İmages/logo.png" style="width:100%; height:200px;" alt="Tamirinden">*@
+                                @*@Html.Action("Admin_Layout", "Login")*@
+                            </div>
+                            @Html.Action("Notifications", "Login")
+                            @Html.Action("Notifications2", "Login")
+                            @Html.Action("Notifications3", "Login")
+                            <a href="~/Login/Logout" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-export text-primary me-2"></i>Siteye Ziyaret</a>
+                        </div>
+                    </li>
                     @*@Html.Action("Applications_notices", "Admin")*@
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,7 +91,6 @@
                                 @Html.Action("Admin_Layout", "Login")
                             </div>
                             <a href="~/Login/MyProfile" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Benim Profilim<span class="badge badge-pill badge-danger">1</span></a>
-                            <a href="~/Admin/Başvuru" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>Gelen Mesajlar</a>
                             <a href="~/Home/Index" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-export text-primary me-2"></i>Siteye Ziyaret</a>
                             <a href="~/Login/Logout" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Çıkış Yap</a>
                         </div>
@@ -371,11 +385,93 @@
                             <span class="menu-title">Gelen Mesajlar</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\Kategoriler">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Kategoriler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\İl">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İller</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\İlçe">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İlçeler</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-category">Arşivler</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivAdmin">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Adminler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivTamirci">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Tamirciler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivBaşvuru">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Firma Başvuruları</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivYorumlar">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Yorumlar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivHakkımızda">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Hakkımızda Yazıları</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivMesajlar">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Gelen Mesajlar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivKategoriler">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Kategoriler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\Arşivİl">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İller</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\Arşivİlçe">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İlçeler</span>
+                        </a>
+                    </li>
+
                     <li class="nav-item nav-category">Siteye Ziyaret</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="~/Home/Index">
-                            <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                        <a class="nav-link" href="~/Home/Index" target="_blank">
+                            <i class="menu-icon mdi mdi-export"></i>
                             <span class="menu-title">Siteye Git</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Çıkış Yap</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Login/Logout">
+                            <i class="menu-icon mdi mdi-export"></i>
+                            <span class="menu-title">Çıkış Yap</span>
                         </a>
                     </li>
                 </ul>

@@ -1,0 +1,84 @@
+﻿@using Tamirci.Models
+@model List<Admin>
+<div class="row flex-grow">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card card-rounded">
+            <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                    <div>
+                        <h4 class="card-title card-title-dash">Site Adminleri</h4>
+                    </div>
+                    <div>
+                        <a href="\Login\AddAdmin" class="btn btn-primary btn-lg text-white mb-0 me-0"><i class="mdi mdi-account-plus"></i>&nbsp;&nbsp;Yeni Admin Ekle</a>
+                    </div>
+                </div>
+                <br />
+               
+                @if (@TempData["Warning"] != null)
+                {
+                    <div id="dv1" class="alert alert-danger">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong style="font-size:15px;">@TempData["Warning"]</strong>
+                    </div>
+                }
+                @if (@TempData["AlertMessage"] != null)
+                {
+                    <div id="dv1" class="alert alert-success">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong style="font-size:15px;">Başarı  !! @TempData["AlertMessage"]</strong>
+                    </div>
+                }
+                <div class="table-responsive  mt-1">
+                    <table class="table select-table">
+                        <thead>
+                            <tr>
+                                <th>Admin İsim</th>
+                                <th>Admin Mail</th>
+                                <th>Admin Telefon</th>
+                                <th>Admin Kullanıcı Ad</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td>@x.Adminİsim</td>
+                                    <td>@x.AdminMail</td>
+                                    <td>@x.AdmiTelefon</td>
+                                    <td>@x.AdminİsimKullanıcıAd</td>
+                                    <td>
+                                        <a href="\Login\RemoveAdmin\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script>
+    function UserDeleteConfirmation() {
+        return confirm("Öge silinecektir onaylıyor musunuz?")
+    }
+    function kapat() {
+        setTimeout("document.getElementById('dv1').style.display = 'none'", 3000);
+    }
+    $('#tbl1').DataTable({
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+        }
+    });
+
+</script>

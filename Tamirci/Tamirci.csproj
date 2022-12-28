@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.13605.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -55,12 +58,22 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.1.0\lib\net46\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleCrypto, Version=26.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -161,7 +174,41 @@
     <Compile Include="Migrations\202211281129043_İlçe_tamirci_added.designer.cs">
       <DependentUpon>202211281129043_İlçe_tamirci_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212062048283_rating_Added.cs" />
+    <Compile Include="Migrations\202212062048283_rating_Added.designer.cs">
+      <DependentUpon>202212062048283_rating_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212062053454_puan_changed.cs" />
+    <Compile Include="Migrations\202212062053454_puan_changed.designer.cs">
+      <DependentUpon>202212062053454_puan_changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212070628544_İL_İLÇE_KATEGORİ_İSDELETED_ADDED.cs" />
+    <Compile Include="Migrations\202212070628544_İL_İLÇE_KATEGORİ_İSDELETED_ADDED.designer.cs">
+      <DependentUpon>202212070628544_İL_İLÇE_KATEGORİ_İSDELETED_ADDED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212171112042_Puan_type_change.cs" />
+    <Compile Include="Migrations\202212171112042_Puan_type_change.designer.cs">
+      <DependentUpon>202212171112042_Puan_type_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212182015100_Add_Log.cs" />
+    <Compile Include="Migrations\202212182015100_Add_Log.designer.cs">
+      <DependentUpon>202212182015100_Add_Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212182128144_ToDoList_Added.cs" />
+    <Compile Include="Migrations\202212182128144_ToDoList_Added.designer.cs">
+      <DependentUpon>202212182128144_ToDoList_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212182131518_ToDo_Status_Added.cs" />
+    <Compile Include="Migrations\202212182131518_ToDo_Status_Added.designer.cs">
+      <DependentUpon>202212182131518_ToDo_Status_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212280841064_Mesalar_acyive_added..cs" />
+    <Compile Include="Migrations\202212280841064_Mesalar_acyive_added..designer.cs">
+      <DependentUpon>202212280841064_Mesalar_acyive_added..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Puan.cs" />
+    <Compile Include="Models\ToDo.cs" />
     <Compile Include="Models\İl.cs" />
     <Compile Include="Models\İlçe.cs" />
     <Compile Include="ViewModel\KategoriViewModel.cs" />
@@ -361,6 +408,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Style\admintemp\admintemp\.gitignore" />
     <Content Include="Content\Style\admintemp\admintemp\docs\documentation.html" />
     <Content Include="Content\Style\admintemp\admintemp\docs\documentation.js" />
@@ -1856,10 +1904,14 @@
     <Content Include="Content\Style\İmages\profil.png" />
     <Content Include="Content\Style\İmages\tamir.jpg" />
     <Content Include="Content\Style\İmages\tamirarkaplan.jpeg" />
+    <Content Include="Content\Style\İmages\tamirarkaplan.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\jquery-1.4.2.min.js" />
+    <Content Include="js\jquery-ui-1.8.1.custom.min.js" />
+    <Content Include="js\main.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Compile Include="Models\Mesajlar.cs" />
@@ -2135,6 +2187,12 @@
     <Content Include="Content\Style\ZenBlog\ZenBlog\assets\vendor\bootstrap\js\bootstrap.js.map" />
     <Content Include="Content\Style\ZenBlog\ZenBlog\assets\vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Content\Style\ZenBlog\ZenBlog\assets\vendor\swiper\swiper-bundle.min.js.map" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -2273,9 +2331,58 @@
     <Content Include="Views\Tamirciler\İlİlçe.cshtml" />
     <Content Include="Views\Admin\Kategori.cshtml" />
     <Content Include="Views\About\Puanlama2.cshtml" />
+    <Content Include="Views\Tamirciler\Puanlama1.cshtml" />
+    <Content Include="Views\Tamirciler\Puanlama2.cshtml" />
+    <Content Include="Views\Admin\Kategoriler.cshtml" />
+    <Content Include="Views\Admin\İl.cshtml" />
+    <Content Include="Views\Admin\İlçe.cshtml" />
+    <Content Include="Views\Admin\AddKategori.cshtml" />
+    <Content Include="Views\Admin\Addİl.cshtml" />
+    <Content Include="Views\Admin\Addİlçe.cshtml" />
+    <Content Include="Views\Admin\İlİlçe.cshtml" />
+    <Content Include="Views\Admin\GetKategori.cshtml" />
+    <Content Include="Views\Admin\Getİl.cshtml" />
+    <Content Include="Views\Admin\Getİlçe.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Home\Site_Usage_Rules.cshtml" />
+    <Content Include="Views\Home\Copyright.cshtml" />
+    <Content Include="Views\Admin\GetMesaj.cshtml" />
+    <Content Include="Views\Login\GetMyProfile.cshtml" />
+    <Content Include="Views\Admin\ArşivTamirci.cshtml" />
+    <Content Include="Views\Admin\ArşivBaşvuru.cshtml" />
+    <Content Include="Views\Admin\ArşivYorumlar.cshtml" />
+    <Content Include="Views\Admin\ArşivMesajlar.cshtml" />
+    <Content Include="Views\Admin\ArşivHakkımızda.cshtml" />
+    <Content Include="Views\Admin\ArşivKategoriler.cshtml" />
+    <Content Include="Views\Admin\Arşivİl.cshtml" />
+    <Content Include="Views\Admin\Arşivİlçe.cshtml" />
+    <Content Include="Views\Login\Notifications.cshtml" />
+    <Content Include="Views\Login\Notifications2.cshtml" />
+    <Content Include="Views\Login\Notifications3.cshtml" />
+    <Content Include="Views\Admin\Adminler.cshtml" />
+    <Content Include="Views\Admin\ArşivAdmin.cshtml" />
+    <Content Include="Views\Admin\SonBasvuru.cshtml" />
+    <Content Include="Views\Admin\SonMesaj.cshtml" />
+    <Content Include="Views\Admin\SonYorum.cshtml" />
+    <Content Include="Views\Admin\TotalYorum.cshtml" />
+    <Content Include="Views\Admin\TotalMesaj.cshtml" />
+    <Content Include="Views\Admin\TotalBaşvuru.cshtml" />
+    <Content Include="Views\Admin\TotalTamirci.cshtml" />
+    <Content Include="Views\Admin\TotalTıklanma.cshtml" />
+    <Content Include="Views\Admin\TotalAdmin.cshtml" />
+    <Content Include="Views\Admin\ToDoList.cshtml" />
+    <Content Include="Views\Admin\ToDo.cshtml" />
+    <Content Include="Views\Admin\AddToDo.cshtml" />
+    <Content Include="Views\Login\Password.cshtml" />
+    <Content Include="Views\Tamirciler\Filtre.cshtml" />
+    <Content Include="Views\Tamirciler\SonEklenenTamirci.cshtml" />
+    <Content Include="Views\Tamirciler\SonEklenenYorum.cshtml" />
+    <Content Include="Views\Tamirciler\SonMesajlar.cshtml" />
+    <Content Include="Views\Home\Mesajlar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Readme\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2329,6 +2436,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211281129043_İlçe_tamirci_added.resx">
       <DependentUpon>202211281129043_İlçe_tamirci_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212062048283_rating_Added.resx">
+      <DependentUpon>202212062048283_rating_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212062053454_puan_changed.resx">
+      <DependentUpon>202212062053454_puan_changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212070628544_İL_İLÇE_KATEGORİ_İSDELETED_ADDED.resx">
+      <DependentUpon>202212070628544_İL_İLÇE_KATEGORİ_İSDELETED_ADDED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212171112042_Puan_type_change.resx">
+      <DependentUpon>202212171112042_Puan_type_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212182015100_Add_Log.resx">
+      <DependentUpon>202212182015100_Add_Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212182128144_ToDoList_Added.resx">
+      <DependentUpon>202212182128144_ToDoList_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212182131518_ToDo_Status_Added.resx">
+      <DependentUpon>202212182131518_ToDo_Status_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212280841064_Mesalar_acyive_added..resx">
+      <DependentUpon>202212280841064_Mesalar_acyive_added..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

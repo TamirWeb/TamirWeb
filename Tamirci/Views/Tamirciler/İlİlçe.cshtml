@@ -1,10 +1,8 @@
 ﻿@model Tamirci.ViewModel.İlçeViewModel
 <br />
-<label for="Name"> Firmanızın Bulunduğu İl/İlçe Seçiniz</label>
-<br />
 <div class="form-group mt-3">
-        <div class="col-sm-12">İl:@Html.DropDownListFor(model => model.ilid, Model.illist, new { @class = "form-control" })</div>
+        <div class="col-sm-12">İl:@Html.DropDownListFor(model => model.ilid, Model.illist, new { @class = "form-control", @style = "width:100%;" })</div>
     <br />
-        <div class="col-sm-12"> İlçe:@Html.DropDownListFor(model => model.ilçeid, Model.ilçelist, new { @class = "form-control" ,@id="ilçe"})</div>
+        <div class="col-sm-12"> İlçe:@Html.DropDownListFor(model => model.ilçeid, Model.ilçelist, new { @class = "form-control" ,@id="ilçe", @style = "width:100%;" })</div>
 </div>
 <br />

@@ -17,13 +17,13 @@ namespace Tamirci.Controllers
         }
         public PartialViewResult Section1()
         {
-            var dgr=c.Tamircilers.OrderByDescending(x=>x.ID).Take(6).Where(x => x.IsDeleted == false).ToList();
+            var dgr=c.Tamircilers.OrderByDescending(x=>x.ID).Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik==true).Take(6).ToList();
             return PartialView(dgr);
         }
    
         public PartialViewResult Section2()
         {
-            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false).ToList();
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).ToList();
             return PartialView(dgr);
         }
         public PartialViewResult Section2_1()
@@ -54,6 +54,7 @@ namespace Tamirci.Controllers
             var dgr = c.Mesajlars.Where(x => x.IsDeleted == false).Take(6).ToList();
             return PartialView(dgr);
         }
+
         [HttpGet]
         public PartialViewResult Puanlama1(int id)
         {
@@ -69,7 +70,24 @@ namespace Tamirci.Controllers
             c.SaveChanges();
             return PartialView();
         }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        public ActionResult Mesajlar()
+        {
+            var dgr = c.Mesajlars.Where(x => x.IsDeleted == false && x.Active==true).ToList();
+            return View(dgr);
+        }
+        public ActionResult Site_Usage_Rules()
+        {
+            return View();
+        }
+        public ActionResult Copyright()
+        {
+            return View();
+        }
 
-       
+
     }
 }

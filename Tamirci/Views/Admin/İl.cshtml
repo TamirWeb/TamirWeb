@@ -1,0 +1,101 @@
+﻿@using Tamirci.Models
+@model List<İl>
+
+@{
+    ViewBag.Title = "İl";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div><a href="\Admin\Addİl" class="btn btn-success btn-sm"><i class="mdi mdi-plus-circle-outline"></i>&nbsp;&nbsp;Yeni Kayıt Ekle</a></div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <body onload="kapat()">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">İller Tablosu</h4>
+                @if (@TempData["AlertMessage"] != null)
+                {
+                    <div id="dv1" class="alert alert-success">
+                        <strong style="font-size:15px;">Başarı  !! @TempData["AlertMessage"]</strong>
+                        @*<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>*@
+                    </div>
+                }
+                <div class="table-responsive">
+                    <table id="tbl1" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>İl Adı</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td>@x.Name</td>
+                                    <td>
+                                        <a href="\Admin\Getİl\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-table-edit"></i>&nbsp;&nbsp;Güncelle </a>
+                                        <a href="\Admin\Removeİl\@x.ID" onclick=" if (!UserDeleteConfirmation()) return false;" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Sil</a>
+                                    </td>
+
+                                </tr>
+                            }
+
+                            @*<tr>
+                                    <td>Messsy</td>
+                                    <td>Flash</td>
+                                    <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
+                                    <td><label class="badge badge-warning">In progress</label></td>
+                                </tr>
+                                <tr>
+                                    <td>John</td>
+                                    <td>Premier</td>
+                                    <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
+                                    <td><label class="badge badge-info">Fixed</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Peter</td>
+                                    <td>After effects</td>
+                                    <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
+                                    <td><label class="badge badge-success">Completed</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Dave</td>
+                                    <td>53275535</td>
+                                    <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
+                                    <td><label class="badge badge-warning">In progress</label></td>
+                                </tr>*@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script>
+    function UserDeleteConfirmation() {
+        return confirm("Öge silinecektir onaylıyor musunuz?")
+    }
+    function kapat() {
+        setTimeout("document.getElementById('dv1').style.display = 'none'", 3000);
+    }
+    $('#tbl1').DataTable({
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+        }
+    });
+
+</script>
+
+
+
+

@@ -4,13 +4,12 @@
 }
 
 <div class="form-group">
-    <h3>PUAN VERİN</h3>
+    <h4 style="color:lightcoral;">Tamirciyi Puanlayın</h4>
 
-    <form method="post" >
+    <form method="post">
         <input placeholder="ID" name="Tamirciid" required value="@ViewBag.deger" type="hidden" readonly="readonly" />
         <br />
-
-        <input type="submit" name="formyorum" value="OLUMLU" />
+        <button type="submit" name="formyorum" class="btn btn-outline-success"><i class="bi bi-hand-thumbs-up"></i></button>
     </form>
 </div>
 

@@ -11,6 +11,7 @@ namespace Tamirci.Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
         public int İlid { get; set; }
         public virtual İl İl { get; set; }
     }

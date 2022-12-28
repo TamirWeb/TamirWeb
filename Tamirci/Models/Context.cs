@@ -16,5 +16,8 @@ namespace Tamirci.Models
         public DbSet<Puan> Puans { get; set; }
         public DbSet<İl> İls { get; set; }
         public DbSet<İlçe> İlçes { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<ToDo> ToDos { get; set; }
     }
+
 }

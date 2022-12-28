@@ -24,7 +24,7 @@ namespace Tamirci.Models
         [EmailAddress(ErrorMessage = "Hatalı e-posta adresi")]
         public string TamirciMail { get; set; }
         public string Tamirci_Fotoğraf { get; set; }
-        public float Tamirci_Puan { get; set; }
+        public int Tamirci_Puan { get; set; }
         public bool Tamirci_Aktiflik { get; set; }
         [Required(ErrorMessage = "Tamirci tanımını boş bırakmayınız!")]
         public string Tamirci_Tanım { get; set; }

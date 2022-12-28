@@ -1,0 +1,41 @@
+﻿@model Tamirci.Models.Admin
+@{
+    ViewBag.Title = "GetMyProfile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Profil Güncelle</h4>
+
+
+
+            @using (Html.BeginForm("UpdateMyProfile", "Login", FormMethod.Post))
+            {
+                <label for="Vision">Id</label> <br />
+                @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="Vision">Admin Adı</label> <br />
+                @Html.TextBoxFor(x => x.Adminİsim, new { @class = "form-control" })
+                <br />
+                <label for="Vision">Admin Mail</label> <br />
+                @Html.TextBoxFor(x => x.AdminMail, new { @class = "form-control" })
+                <br />
+                <label for="Vision">Admin Telefon</label> <br />
+                @Html.TextBoxFor(x => x.AdmiTelefon, new { @class = "form-control" })
+                <br />
+                <label for="Vision">Kullanıcı Adı</label> <br />
+                @Html.TextBoxFor(x => x.AdminİsimKullanıcıAd, new { @class = "form-control" })
+                <br />
+                <br />
+                <label for="Vision">Şifre</label> <br />
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" ,@type="password"})
+                <br />
+                <br />
+                <button class="btn btn-outline-warning"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Güncelle</button>
+            }
+
+        </div>
+    </div>
+</div>

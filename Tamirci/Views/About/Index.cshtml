@@ -4,7 +4,7 @@
 }
 @Html.Action("Section1", "About")
 <body onload="kapat()">
-    <section id="contact" class="contact mb-5">
+    <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
 
             <div class="row">
@@ -42,6 +42,8 @@
                 </div><!-- End Info Item -->
 
             </div>
+            <br />
+            <br />
             @if (@TempData["MesajGonderildi"] != null)
             {
                 <div id="dv1" class="alert alert-success">
@@ -73,7 +75,7 @@
                     <br />
 
 
-                    <button class="btn btn-primary" name="submit" type="submit" id="submit">GÖNDER</button>
+                    <button class="btn btn-outline-primary" name="submit" type="submit" id="submit">GÖNDER</button>
 
                 </form>
 

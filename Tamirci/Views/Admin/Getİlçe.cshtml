@@ -1,0 +1,40 @@
+﻿@model Tamirci.Models.İlçe
+@{
+    ViewBag.Title = "Getİlçe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İlçe Güncelle</h4>
+
+
+
+            @using (Html.BeginForm("Updateİlçe", "Admin", FormMethod.Post))
+            {
+                <label for="Vision">Id</label> <br />
+                @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="Vision">İlçe Adı</label> <br />
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                <br />
+                @Html.Action("İlİlçe", "Admin")
+                <br />
+                <button class="btn btn-outline-warning"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Güncelle</button>
+            }
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#ilid").select2();
+        $("#ilid").change(function () {
+            var id = $(this).val();
+            console.log(id);
+            });
+
+        });
+</script>

@@ -1,0 +1,32 @@
+﻿@using Tamirci.Models
+@model List<Yorumlar>
+<div class="col-md-4 col-lg-4 grid-margin stretch-card">
+    <div class="card card-rounded">
+        <div class="card-body card-rounded">
+            <h4 class="card-title  card-title-dash">Son Gelen Yorumlar</h4>
+            @foreach (var x in Model)
+            {
+                <div class="list align-items-center border-bottom py-2">
+                    <div class="wrapper w-100">
+                        <p class="mb-2 font-weight-medium">
+                           @x.GonderenAdSoyad
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="mdi mdi-calendar text-muted me-1"></i>
+                                <p class="mb-0 text-small text-muted">@x.YorumTarih</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+                <div class="list align-items-center pt-3">
+                    <div class="wrapper w-100">
+                        <p class="mb-0">
+                            <a href="\Admin\Yorumlar" class="fw-bold text-primary">Tümünü Göster <i class="mdi mdi-arrow-right ms-2"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

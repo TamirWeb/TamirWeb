@@ -1,0 +1,46 @@
+﻿@using Tamirci.Models
+@model List<ToDo>
+
+<div class="card-body">
+    <div class="d-sm-flex justify-content-between align-items-start">
+        <div>
+            <h4 class="card-title card-title-dash">Yapılacak Görevler Listesi</h4>
+        </div>
+        <div>
+            <a href="\Admin\AddToDo" class="btn btn-primary btn-lg text-white mb-0 me-0"><i class="mdi mdi-account-plus"></i>&nbsp;&nbsp;Yeni Görev Ekle</a>
+        </div>
+    </div>
+    <br />
+    @if (@TempData["Alert1Message"] != null)
+    {
+<div id="dv1" class="alert alert-success">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong style="font-size:15px;">Başarı  !! @TempData["Alert1Message"]</strong>
+    @*<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>*@
+</div>
+    }
+    <div class="table-responsive  mt-1">
+        <table class="table select-table">
+            <thead>
+                <tr>
+                    <th>Yapılan Görev</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Explonation</td>
+                        <td>
+                            <a href="\Admin\UpdateToDo\@x.ID" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-close-circle-outline"></i>&nbsp;&nbsp;Görevi Tamamla</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

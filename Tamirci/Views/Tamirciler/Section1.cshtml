@@ -1,5 +1,7 @@
 ﻿@using Tamirci.Models
-@model List<Yorumlar>
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Yorumlar>
 <h5 style="text-align:center;" class="post-author_head"><b>Yapılan Yorumlar</b></h5>
 @foreach (var x in Model)
 {
@@ -19,4 +21,5 @@
         </li>
 
     </ul>
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Section1", new { sayfa }))
 }

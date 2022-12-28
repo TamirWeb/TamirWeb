@@ -1,0 +1,29 @@
+﻿@model Tamirci.Models.Kategori
+@{
+    ViewBag.Title = "GetKategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kategori Güncelle</h4>
+
+
+
+            @using (Html.BeginForm("UpdateKategori", "Admin", FormMethod.Post))
+            {
+                <label for="Vision">Id</label> <br />
+                @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="Vision">Hakkımızda Yazısı Başlığı</label> <br />
+                @Html.TextBoxFor(x => x.kategori, new { @class = "form-control" })
+                <br />
+                <br />
+                <button class="btn btn-outline-warning"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Güncelle</button>
+            }
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

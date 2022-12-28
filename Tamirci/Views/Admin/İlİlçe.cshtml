@@ -1,0 +1,9 @@
+﻿@model Tamirci.ViewModel.İlçeViewModel
+<br />
+<label for="Name"> Bağlı Olduğu İli Seçiniz</label>
+<br />
+<div class="form-group mt-3">
+    <div class="col-sm-12">İl Adı:@Html.DropDownListFor(model => model.ilid, Model.illist, new { @class = "form-control", @style = "width:100%;" })</div>
+    <br />
+</div>
+<br />

@@ -3,22 +3,20 @@
     ViewBag.Title = "TamirciBaşvuru";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <body onload="kapat()">
-    <div class="breadcrumbs" data-aos="fade-in">
+    <div class="breadcrumbs" style="background-color: #e8e8e8;" data-aos="fade-in">
         <div class="container">
-            <h2>Başvurunuzu İletin</h2>
+            <h2 style="margin-top:10px;">Başvurunuzu İletin</h2>
         </div>
     </div><!-- End Breadcrumbs -->
-    <section id="contact" class="contact mb-5">
+    <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
 
             @if (@TempData["MesajGonderildi"] != null)
             {
                 <div id="dv1" class="alert alert-success">
                     <strong style="font-size:15px;">@TempData["MesajGonderildi"]</strong>
-                    @*<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">x</span>
-                        </button>*@
                 </div>
             }
             <div class="form mt-5">
@@ -27,6 +25,8 @@
                     <div class="form-group mt-3">
                         <input type="text" class="form-control" name="TamirciAdı" id="subject" placeholder="Firmanızın Adı" autofocus required>
                     </div>
+                    <br />
+                    <label for="Name"> Firmanızın Bulunduğu İl/İlçe Seçiniz</label>
                     @Html.Action("İlİlçe", "Tamirciler")
                     <label for="Name">Firma Adres</label> <br />
                     <div class="form-group mt-3">
@@ -48,10 +48,11 @@
                     <label for="Name">Tamir Kategorisi Seçiniz</label> <br />
                     <br />
                     <div class="form-group mt-3">
-                        @Html.DropDownListFor(model => model.Kategoriid, Model.Kategorilist, new { @class = "form-control", @id = "kategori" })
+                        @Html.DropDownListFor(model => model.Kategoriid, Model.Kategorilist, new { @class = "form-control", @id = "kategori", @style = "width:100%;" })
                     </div>
-            </div>
+</div>
             <br />
+            <label for="Name">Tamirci Fotoğraf Seçiniz</label> <br />
             <br />
             <input class=" form-control" type="file" name="Tamirci_Fotoğraf" />
             <br />
@@ -60,7 +61,6 @@
             <button class="btn btn-primary" name="submit" type="submit" id="submit">GÖNDER</button>
 
             </form>
-
         </div><!-- End Contact Form -->
         </div>
     </section>
@@ -100,4 +100,3 @@
         });
     });
 </script>
-

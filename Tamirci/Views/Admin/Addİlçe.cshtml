@@ -1,0 +1,33 @@
+﻿@model Tamirci.Models.İlçe
+@{
+    ViewBag.Title = "Addİlçe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Yeni İlçe Ekle</h3>
+
+            @using (Html.BeginForm("Addİlçe", "Admin", FormMethod.Post))
+            {
+                <label for="Baslik">İlçe Adı</label> <br />
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.Action("İlİlçe","Admin")
+                <br />
+                <button class="btn btn-outline-primary"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Ekle</button>
+            }
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#ilid").select2();
+        $("#ilid").change(function () {
+            var id = $(this).val();
+            console.log(id);
+            });
+
+        });
+</script>

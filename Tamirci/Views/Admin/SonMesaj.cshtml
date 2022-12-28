@@ -1,0 +1,30 @@
+﻿@using Tamirci.Models
+@model List<Mesajlar>
+<div class="col-md-4 col-lg-4 grid-margin stretch-card">
+    <div class="card card-rounded">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h4 class="card-title card-title-dash">Son Gelen Mesajlar</h4>
+                <p class="mb-0">20 finished, 5 remaining</p>
+            </div>
+            @foreach (var x in Model)
+            {
+                <ul class="bullet-line-list">
+                    <li>
+                        <div class="d-flex justify-content-between">
+                            <div><span class="text-light-green">@x.MesajGonderenAdSoyad</div>
+                            <p>@x.MesajGonderenMail</p>
+                        </div>
+                    </li>
+                </ul>
+            }
+                <div class="list align-items-center pt-3">
+                    <div class="wrapper w-100">
+                        <p class="mb-0">
+                            <a href="\Admin\Mesajlar" class="fw-bold text-primary">Tümünü Göster <i class="mdi mdi-arrow-right ms-2"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

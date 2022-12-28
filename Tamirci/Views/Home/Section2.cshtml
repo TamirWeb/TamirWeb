@@ -1,14 +1,10 @@
 ﻿@using Tamirci.Models
 @model List<Tamirciler>
-<br />
-<br />
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <style>
     .counter {
-        background-color: #eaecf0;
+        background-color: #f7f5f5;
         text-align: center;
     }
 
@@ -40,42 +36,43 @@
         line-height: 34px;
     }
 </style>
-<div class="section-title">
-    <h2>Bazı Harika Gerçekler</h2>
-</div>
-<div class="counter">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="employees">
-                    <p class="counter-count">200</p>
-                    <p class="employee-p">Tamirci</p>
+<section id="team" class="team section-bg">
+    <div class="counter">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="employees">
+                        <p class="counter-count">200</p>
+                        <p class="employee-p">Tamirci</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="customer">
-                    <p class="counter-count">100</p>
-                    <p class="customer-p">Yorum</p>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="customer">
+                        <p class="counter-count">100</p>
+                        <p class="customer-p">Yorum</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="design">
-                    <p class="counter-count">200</p>
-                    <p class="design-p">Puanlama</p>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="design">
+                        <p class="counter-count">200</p>
+                        <p class="design-p">Puanlama</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="order">
-                    <p class="counter-count">1000</p>
-                    <p class="order-p">Tıklanma</p>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="order">
+                        <p class="counter-count">1000</p>
+                        <p class="order-p">Tıklanma</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('.counter-count').each(function () {
         $(this).prop('Counter', 0).animate({

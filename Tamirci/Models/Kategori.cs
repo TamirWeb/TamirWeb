@@ -9,6 +9,7 @@ namespace Tamirci.Models
     {
         public int Id { get; set; }
         public string kategori { get; set; }
+        public bool IsDeleted { get; set; }
         public ICollection<Tamirciler> tamircilers { get; set; }
 
     }

@@ -67,7 +67,22 @@
                             <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                         </form>
                     </li>
+                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="dropdown-item-icon mdi mdi-bell text-primary me-2"></i>
+                        </a>
 
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <div class="dropdown-header text-center">
+                                @*<img class="img-md" src="~/Content/Style/İmages/logo.png" style="width:100%; height:200px;" alt="Tamirinden">*@
+                                @*@Html.Action("Admin_Layout", "Login")*@
+                            </div>
+                            @Html.Action("Notifications", "Login")
+                            @Html.Action("Notifications2", "Login")
+                            @Html.Action("Notifications3", "Login")
+                            <a href="~/Login/Logout" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-export text-primary me-2"></i>Siteye Ziyaret</a>
+                        </div>
+                    </li>
                     @*@Html.Action("Applications_notices", "Admin")*@
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -268,82 +283,82 @@
                     </li>
 
                     @*<li class="nav-item nav-category">UI Elements</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                                <i class="menu-icon mdi mdi-floor-plan"></i>
-                                <span class="menu-title">UI Elements</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="ui-basic">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item nav-category">Tablolar</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                                <i class="menu-icon mdi mdi-card-text-outline"></i>
-                                <span class="menu-title">Form elements</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="form-elements">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                                <i class="menu-icon mdi mdi-chart-line"></i>
-                                <span class="menu-title">Charts</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="charts">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                                <i class="menu-icon mdi mdi-table"></i>
-                                <span class="menu-title">Tables</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="tables">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-                                <i class="menu-icon mdi mdi-layers-outline"></i>
-                                <span class="menu-title">Icons</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="icons">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item nav-category">pages</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                                <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                                <span class="menu-title">User Pages</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="auth">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                                </ul>
-                            </div>
-                        </li>*@
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <i class="menu-icon mdi mdi-floor-plan"></i>
+                <span class="menu-title">UI Elements</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item nav-category">Tablolar</li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                <span class="menu-title">Form elements</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+                <i class="menu-icon mdi mdi-chart-line"></i>
+                <span class="menu-title">Charts</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                <i class="menu-icon mdi mdi-table"></i>
+                <span class="menu-title">Tables</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="tables">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+                <i class="menu-icon mdi mdi-layers-outline"></i>
+                <span class="menu-title">Icons</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="icons">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item nav-category">pages</li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                <span class="menu-title">User Pages</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                </ul>
+            </div>
+        </li>*@
                     <li class="nav-item nav-category">Tablolar</li>
                     <li class="nav-item">
                         <a class="nav-link" href="\Admin\Tamirci">
@@ -375,11 +390,91 @@
                             <span class="menu-title">Gelen Mesajlar</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\Kategoriler">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Kategoriler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\İl">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İller</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\İlçe">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İlçeler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Arşivler</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivAdmin">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Adminler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivTamirci">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Tamirciler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivBaşvuru">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Firma Başvuruları</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivYorumlar">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Yorumlar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivHakkımızda">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Hakkımızda Yazıları</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivMesajlar">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Gelen Mesajlar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\ArşivKategoriler">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">Kategoriler</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\Arşivİl">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İller</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Admin\Arşivİlçe">
+                            <i class="mdi mdi-table-large menu-icon"></i>
+                            <span class="menu-title">İlçeler</span>
+                        </a>
+                    </li>
                     <li class="nav-item nav-category">Siteye Ziyaret</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="~/Home/Index">
-                            <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                        <a class="nav-link" href="~/Home/Index" target="_blank">
+                            <i class="menu-icon mdi mdi-export"></i>
                             <span class="menu-title">Siteye Git</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Çıkış Yap</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Login/Logout">
+                            <i class="menu-icon mdi mdi-export"></i>
+                            <span class="menu-title">Çıkış Yap</span>
                         </a>
                     </li>
                 </ul>
@@ -404,7 +499,7 @@
                                 <br />
                                 @Html.Action("İlİlçe", "Tamirciler")
                                 @*<label for="Name">Tamirci İli</label> <br />
-                                    @Html.TextBoxFor(x => x.Tamirci_İl, new { @class = "form-control" })*@
+                            @Html.TextBoxFor(x => x.Tamirci_İl, new { @class = "form-control" })*@
                                 <br />
                                 <label for="Name">Tamirci Adresi</label> <br />
                                 @Html.TextAreaFor(x => x.Tamirci_Adres, new { @class = "form-control", style = "height:200px; resize:vertical;" })

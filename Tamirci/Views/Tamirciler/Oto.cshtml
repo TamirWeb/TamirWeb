@@ -1,5 +1,7 @@
 ﻿@using Tamirci.Models
-@model List<Tamirciler>
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Tamirciler>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,6 +14,32 @@
 </div>-->
 <!-- End Breadcrumbs -->
 <!-- ======= Events Section ======= -->
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<style>
+    .accordion {
+        background-color: #e1e9ed;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+        .active, .accordion:hover {
+            background-color: #c6e5f5;
+        }
+
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
+</style>
 <main id="main">
     <section>
         <div class="container">
@@ -40,17 +68,19 @@
                                 </div>
                             </div>
                         }
-                        <div class="text-start py-4">
-                            <div class="custom-pagination">
-                                <a href="#" class="prev">Prevous</a>
-                                <a href="#" class="active">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#" class="next">Next</a>
-                            </div>
-                        </div>
+                        @*<div class="text-start py-4">
+                                <div class="custom-pagination">
+                                    <a href="#" class="prev">Prevous</a>
+                                    <a href="#" class="active">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#" class="next">Next</a>
+                                </div>
+                            </div>*@
+                        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Oto", new { sayfa }))
+
                     }
                     else
                     {
@@ -65,180 +95,131 @@
                 <div class="col-md-3">
                     <!-- ======= Sidebar ======= -->
                     <div class="aside-block">
+                        <div class="single-blog-page">
+                            <!-- search option start -->
+                            <form action="/Search/Ara" class="search-form">
 
-                        <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">Popular</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-trending-tab" data-bs-toggle="pill" data-bs-target="#pills-trending" type="button" role="tab" aria-controls="pills-trending" aria-selected="false">Trending</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-latest-tab" data-bs-toggle="pill" data-bs-target="#pills-latest" type="button" role="tab" aria-controls="pills-latest" aria-selected="false">Latest</button>
-                            </li>
-                        </ul>
+                                @using (Html.BeginForm("Ara", "Search", FormMethod.Get))
+                                {
+                                    @Html.TextBox("k", null, new { @class = "form-control", @placeholder = "Tamirci Adı İle Arayın" })
 
-                        <div class="tab-content" id="pills-tabContent">
 
-                            <!-- Popular -->
-                            <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Sport</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-                            </div> <!-- End Popular -->
-                            <!-- Trending -->
-                            <div class="tab-pane fade" id="pills-trending" role="tabpanel" aria-labelledby="pills-trending-tab">
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Sport</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-                            </div> <!-- End Trending -->
-                            <!-- Latest -->
-                            <div class="tab-pane fade" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Sport</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                                <div class="post-entry-1 border-bottom">
-                                    <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h2 class="mb-2"><a href="#">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-                                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                                </div>
-
-                            </div> <!-- End Latest -->
-
+                                }
+                            </form>
+                            <!-- search option end -->
                         </div>
-                    </div>
-
-                    <!--<div class="aside-block">
-                        <h3 class="aside-title">Video</h3>
-                        <div class="video-post">
-                            <a href="https://www.youtube.com/watch?v=AiFfDjmd0jU" class="glightbox link-video">
-                                <span class="bi-play-fill"></span>
-                                <img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>--><!-- End Video -->
-
-                    <div class="aside-block">
-                        <h3 class="aside-title">Categories</h3>
-                        <ul class="aside-links list-unstyled">
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-                            <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
-                        </ul>
                     </div><!-- End Categories -->
 
                     <div class="aside-block">
-                        <h3 class="aside-title">Tags</h3>
+                        <form id="contact" action="/Tamirciler/Filtre" method="post">
+                            <label for="Name">Kategoriye Göre</label> <br />
+                            @Html.CheckBox("Check1", new { @class = "form-check-input" })<span> Oto Tamircisi&nbsp;<i class="bi bi-car-front"></i></span>
+                            <br />
+                            @Html.CheckBox("Check2", new { @class = "form-check-input" })<span> Motor Tamircisi &nbsp;<i class="bi bi-bicycle"></i></span>
+                            <br />
+                            <br />
+                            <label for="Name">Tıklanmaya Göre</label>
+                            <br />
+                            @Html.CheckBox("Check3", new { @class = "form-check-input" })<span> Çoktan Az Tıklanana <i class="bi bi-arrow-down-circle"></i></span>
+                            <br />
+                            @Html.CheckBox("Check4", new { @class = "form-check-input" })<span> Azdan Çok Tıklanana <i class="bi bi-arrow-up-circle"></i></span>
+                            <br />
+                            <br />
+                            <label for="Name">Yoruma Göre</label>
+                            <br />
+                            @Html.CheckBox("Check5", new { @class = "form-check-input" })<span>Çoktan Az Yorum Alana <i class="bi bi-arrow-down-circle"></i></span>
+                            <br />
+                            @Html.CheckBox("Check6", new { @class = "form-check-input" })<span> Azdan Çok Yorum Alana <i class="bi bi-arrow-up-circle"></i></span>
+                            <br />
+                            <br />
+                            <label for="Name">Puana Göre</label>
+                            <br />
+                            @Html.CheckBox("Check7", new { @class = "form-check-input" })<span> Çoktan Az Puana <i class="bi bi-arrow-down-circle"></i></span>
+                            <br />
+                            @Html.CheckBox("Check8", new { @class = "form-check-input" })<span>Azdan Çok Puana <i class="bi bi-arrow-up-circle"></i></span>
+                            <br />
+                            <br />
+                            <label for="Name">Konuma Göre</label>
+                            @Html.Action("İlİlçe", "Tamirciler")
+                            <button class="btn btn-primary" name="submit" type="submit" id="submit">Filtrele</button>
+
+                        </form>
+                        <br />
+                    </div>
+
+                    <div class="aside-block">
+                        <h3 class="aside-title">Kategori</h3>
                         <ul class="aside-tags list-unstyled">
-                            <li><a href="category.html">Business</a></li>
-                            <li><a href="category.html">Culture</a></li>
-                            <li><a href="category.html">Sport</a></li>
-                            <li><a href="category.html">Food</a></li>
-                            <li><a href="category.html">Politics</a></li>
-                            <li><a href="category.html">Celebrity</a></li>
-                            <li><a href="category.html">Startups</a></li>
-                            <li><a href="category.html">Travel</a></li>
+                            <li><a href="~/Tamirciler/Oto">Araba Tamiri</a></li>
+                            <li><a href="~/Tamirciler/Motor">Motor Tamiri</a></li>
                         </ul>
                     </div><!-- End Tags -->
-
+                    <div class="aside-block">
+                        <h3 class="aside-title">Son Eklenen Tamirciler</h3>
+                        <ul class="aside-tags list-unstyled">
+                            @Html.Action("SonEklenenTamirci", "Tamirciler")
+                        </ul>
+                    </div><!-- End Tags -->
+                    <div class="aside-block">
+                        <h3 class="aside-title">Son Eklenen Yorumlar</h3>
+                        <ul class="aside-tags list-unstyled">
+                            @Html.Action("SonEklenenYorum", "Tamirciler")
+                        </ul>
+                    </div><!-- End Tags -->
+                    <div class="aside-block">
+                        <h3 class="aside-title">Bize Gönderdiğiniz Son Mesajlar</h3>
+                        <ul class="aside-tags list-unstyled">
+                            @Html.Action("SonMesajlar", "Tamirciler")
+                        </ul>
+                    </div><!-- End Tags -->
                 </div>
 
             </div>
         </div>
     </section>
 </main><!-- End #main -->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#ilid").select2();
+        $("#ilçe").select2();
+        $("#ilid").change(function () {
+            var id = $(this).val();
+            console.log(id);
+            var ilçelist = $("#ilçe");
+            ilçelist.empty();
+            $.ajax({
+                url: '/Tamirciler/GetInstitution/',
+                type: 'POST',
+                dataType: 'json',
+                data: { 'id': id },
+                success: function (data) {
+                    $.each(data, function (index, option) {
+
+                        ilçelist.append('<option value=' + data[index].Value + '>' + data[index].Text + '</option > ');
+                    });
+                    /* kurumlist.append('<option value=' + data[0].Value + '>' + data[0].Text + '</option > ');*/
+
+                }
+            });
+
+        });
+    });
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>

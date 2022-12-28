@@ -44,16 +44,16 @@ h6 {
 
 /*--------------------------------------------------------------
 # Sections & Section Header
---------------------------------------------------------------*/
+------------------------------------------- #f5f9fc -geçiþ-------------------*/
 section {
-  padding: 40px 0;
-  overflow: hidden;
-  background-color:aliceblue;
+    padding: 40px 0;
+    overflow: hidden;
+    background-color: /*aliceblue*/ /*#f2f5f7*/ #f7f5f5 ;
 }
 
 .section-header {
     border-bottom: 2px solid var(--color-black);
-    background-color: aliceblue;
+    background-color: #f7f5f5;
 }
 
 .section-header h2 {
@@ -1197,89 +1197,6 @@ section {
   }
 }
 
-.contact .php-email-form {
-  box-shadow: 0 0 30px rgba(var(--color-black-rgb), 0.1);
-  padding: 30px;
-  background: var(--color-white);
-}
-
-@media (max-width: 640px) {
-  .contact .php-email-form {
-    padding: 20px;
-  }
-}
-
-.contact .php-email-form .error-message {
-  display: none;
-  color: var(--color-white);
-  background: var(--color-red);
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .error-message br+br {
-  margin-top: 25px;
-}
-
-.contact .php-email-form .sent-message {
-  display: none;
-  color: var(--color-white);
-  background: var(--color-green);
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .loading {
-  display: none;
-  background: var(--color-white);
-  text-align: center;
-  padding: 15px;
-}
-
-.contact .php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--color-green);
-  border-top-color: var(--color-white);
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
-}
-
-.contact .php-email-form .form-group {
-  margin-bottom: 20px;
-}
-
-.contact .php-email-form input,
-.contact .php-email-form textarea {
-  padding: 10px 14px;
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 15px;
-}
-
-.contact .php-email-form input::focus,
-.contact .php-email-form textarea::focus {
-  background-color: var(--color-primary);
-}
-
-.contact .php-email-form button[type=submit] {
-  background: var(--color-primary);
-  border: 0;
-  padding: 10px 30px;
-  color: #fff;
-  transition: 0.4s;
-  cursor: pointer;
-}
-
-.contact .php-email-form button[type=submit]:hover {
-  background: rgba(var(--color-primary-rgb), 0.8);
-}
 
 @-webkit-keyframes animate-loading {
   0% {
@@ -1301,115 +1218,158 @@ section {
   }
 }
 
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-.footer {
-  overflow: hidden;
-  background: rgba(var(--color-black-rgb), 0.9);
-  font-size: 16px;
-  color: rgba(var(--color-white-rgb), 0.7);
+#footer {
+    background: #587187;
+    padding: 0 0 30px 0;
+    color: #fff;
+    font-size: 14px;
 }
 
-.footer .footer-content {
-  padding: 60px 0;
-}
+    #footer .footer-top {
+        background: #5c768d;
+        border-top: 1px solid #768fa6;
+        border-bottom: 1px solid #67839c;
+        padding: 60px 0 30px 0;
+    }
 
-.footer a.footer-link-more {
-  color: rgba(var(--color-white-rgb), 0.7);
-  display: inline-block;
-  position: relative;
-}
+        #footer .footer-top .footer-info {
+            margin-bottom: 30px;
+        }
 
-.footer a.footer-link-more:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--color-white);
-}
+            #footer .footer-top .footer-info h3 {
+                font-size: 24px;
+                margin: 0 0 20px 0;
+                padding: 2px 0 2px 0;
+                line-height: 1;
+                font-weight: 700;
+            }
 
-.footer a.footer-link-more:hover {
-  color: rgba(var(--color-white-rgb), 1);
-}
+            #footer .footer-top .footer-info p {
+                font-size: 14px;
+                line-height: 24px;
+                margin-bottom: 0;
+                font-family: "Raleway", sans-serif;
+                color: #fff;
+            }
 
-.footer .footer-heading {
-  color: var(--color-white);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  font-size: 18px;
-}
+        #footer .footer-top .social-links a {
+            font-size: 18px;
+            display: inline-block;
+            background: #768fa6;
+            color: #fff;
+            line-height: 1;
+            padding: 8px 0;
+            margin-right: 4px;
+            border-radius: 50%;
+            text-align: center;
+            width: 36px;
+            height: 36px;
+            transition: 0.3s;
+        }
 
-.footer .footer-blog-entry li {
-  margin-bottom: 20px;
-  display: block;
-}
+            #footer .footer-top .social-links a:hover {
+                background: #428bca;
+                color: #fff;
+                text-decoration: none;
+            }
 
-.footer .footer-blog-entry li a .post-meta {
-  font-size: 10px;
-  letter-spacing: 0.07rem;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-family: var(--font-secondary);
-  color: rgba(var(--color-white-rgb), 0.4);
-  margin-bottom: 0px;
-}
+        #footer .footer-top h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            position: relative;
+            padding-bottom: 12px;
+        }
 
-.footer .footer-blog-entry li a img {
-  flex: 0 0 50px;
-  width: 50px;
-}
+        #footer .footer-top .footer-links {
+            margin-bottom: 30px;
+        }
 
-.footer .footer-links li {
-  margin-bottom: 10px;
-}
+            #footer .footer-top .footer-links ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
 
-.footer .footer-links li a {
-  color: rgba(var(--color-white-rgb), 0.7);
-}
+                #footer .footer-top .footer-links ul i {
+                    padding-right: 2px;
+                    color: #9eccf4;
+                    font-size: 18px;
+                    line-height: 1;
+                }
 
-.footer .footer-links li a:hover,
-.footer .footer-links li a:focus {
-  color: rgba(var(--color-white-rgb), 1);
-}
+                #footer .footer-top .footer-links ul li {
+                    padding: 10px 0;
+                    display: flex;
+                    align-items: center;
+                }
 
-.footer .footer-legal {
-  background: var(--color-black);
-  padding: 40px 0;
-}
+                    #footer .footer-top .footer-links ul li:first-child {
+                        padding-top: 0;
+                    }
 
-.footer .footer-legal .social-links a {
-  text-align: center;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(var(--color-white-rgb), 0.09);
-  border-radius: 50%;
-  color: var(--color-white);
-  line-height: 40px;
-}
+                #footer .footer-top .footer-links ul a {
+                    color: #fff;
+                    transition: 0.3s;
+                    display: inline-block;
+                    line-height: 1;
+                }
 
-.footer .footer-legal .social-links a:hover {
-  background-color: rgba(var(--color-white-rgb), 0.2);
-}
+                    #footer .footer-top .footer-links ul a:hover {
+                        color: #9eccf4;
+                    }
 
-.footer .copyright strong {
-  font-weight: 400;
-}
+        #footer .footer-top .footer-newsletter form {
+            margin-top: 30px;
+            background: #fff;
+            padding: 6px 10px;
+            position: relative;
+            border-radius: 4;
+        }
 
-.footer .credits {
-  padding-top: 6px;
-  font-size: 13px;
-}
+            #footer .footer-top .footer-newsletter form input[type=email] {
+                border: 0;
+                padding: 4px;
+                width: calc(100% - 110px);
+            }
 
-.footer .credits a {
-  color: var(--color-white);
-}
+            #footer .footer-top .footer-newsletter form input[type=submit] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                border: 0;
+                background: none;
+                font-size: 16px;
+                padding: 0 20px;
+                background: #428bca;
+                color: #fff;
+                transition: 0.3s;
+                border-radius: 4;
+            }
+
+                #footer .footer-top .footer-newsletter form input[type=submit]:hover {
+                    background: #5295ce;
+                }
+
+    #footer .copyright {
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    #footer .credits {
+        padding-top: 10px;
+        text-align: center;
+        font-size: 13px;
+        color: #fff;
+    }
+
+        #footer .credits a {
+            color: #9eccf4;
+        }
 
 .stats-counter {
-   /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Content/Style/Ýmages/tamir.jpg") center center;*/
+   /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Content/Style/Ýmages/tamir.jpg") center center;*/
     background-size: cover;
     padding: 100px 0;
 }
@@ -1440,6 +1400,9 @@ section {
         font-weight: 700;
         color: darkblue;
     }
+
+
+
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
@@ -1668,7 +1631,7 @@ section {
         }
 
             .courses .course-content h3 a:hover {
-                color: #5fcf80;
+                color: #3268a8;
             }
 
     .courses .course-content p {
@@ -1716,6 +1679,7 @@ section {
 .section-title {
     text-align: center;
     padding-bottom: 30px;
+    margin-top:68px;
 }
 
     .section-title h2 {
@@ -1826,7 +1790,7 @@ section {
 .breadcrumbs {
     margin-top: 73px;
     text-align: center;
-    background-color:lightgrey;
+    background-color: #d7e7fa;
     padding: 15px 0;
     color: black;
 }
@@ -1844,10 +1808,12 @@ section {
             font-size: 56px;
             font-weight: 500;
             color: black;
+
             font-family: var(--font-secondary);
         }
 
         .breadcrumbs2 .page-header p {
+            
             color: rgba(255, 255, 255, 0.8);
         }
 

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Tamirci.Models;
 using Tamirci.ViewModel;
+using PagedList;
 
 namespace Tamirci.Controllers
 {
@@ -41,22 +42,71 @@ namespace Tamirci.Controllers
                 c.SaveChanges();
             }
         }
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
             Calculate();
-            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik==true).ToList();
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik==true).ToList().ToPagedList(sayfa,8);
             return View(dgr);
         }
-        public ActionResult Oto()
+        public ActionResult Oto(int sayfa = 1)
         {
             Calculate();
-            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid==1).ToList();
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid==1).ToList().ToPagedList(sayfa, 8); 
             return View(dgr);
         }
-        public ActionResult Motor()
+        public ActionResult Filtre(bool check1, bool check2, bool check3, bool check4, bool check5, bool check6, bool check7, bool check8,İlçeViewModel model)
+        {
+            var dgr=c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).ToList();
+            var dgr1 = c.İls.Find(model.ilid);
+            var dgr2 = c.İlçes.Find(model.ilçeid);
+            if (dgr1 != null && dgr2 == null)
+            {
+                dgr = dgr.Where(x => x.Tamirci_İl == dgr1.Name).ToList();
+            }
+            if(dgr1!=null && dgr2!=null)
+            {
+                dgr = dgr.Where(x => x.Tamirci_İl == dgr1.Name).ToList();
+                dgr=dgr.Where(x => x.Tamirci_İlçe == dgr2.Name).ToList();
+            }
+            Calculate();
+            if (check1)
+            {
+               dgr =dgr.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid == 1).ToList();
+            }
+            if(check2)
+            {
+                 dgr = dgr.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid == 2).ToList();
+            }
+            if (check3)
+            {
+                dgr = dgr.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).OrderByDescending(x=>x.Click).ToList();
+            }
+            if (check4)
+            {
+                dgr = dgr.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).OrderBy(x=>x.Click).ToList();
+            }
+            if (check5)
+            {
+                dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).OrderByDescending(x => x.Yorumlars.Count).ToList();
+            }
+            if (check6)
+            {
+                dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true ).OrderBy(x => x.Yorumlars.Count).ToList();
+            }
+            if (check7)
+            {
+                dgr = dgr.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).OrderByDescending(x => x.Tamirci_Puan).ToList();
+            }
+            if (check8)
+            {
+                dgr = dgr.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true ).OrderBy(x => x.Tamirci_Puan).ToList();
+            }
+            return View(dgr);
+        }
+        public ActionResult Motor(int sayfa = 1)
         {
             Calculate();
-            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid == 2).ToList();
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.Kategoriid == 2).ToList().ToPagedList(sayfa, 8); 
             return View(dgr);
         }
         public ActionResult TamirciDetail(int id)
@@ -67,11 +117,55 @@ namespace Tamirci.Controllers
             c.SaveChanges();
             return View(dgr);
         }
+        public PartialViewResult SonEklenenYorum()
+        {
+            var dgr = c.Yorumlars.Where(x => x.IsDeleted == false && x.Aktiflik == true).OrderByDescending(x => x.ID).Take(5).ToList();
+            return PartialView(dgr);
+        }
+        public PartialViewResult SonMesajlar()
+        {
+            var dgr = c.Mesajlars.Where(x => x.IsDeleted == false && x.control == true).OrderByDescending(x => x.ID).Take(5).ToList();
+            return PartialView(dgr);
+        }
+        public PartialViewResult SonEklenenTamirci()
+        {
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).OrderByDescending(x => x.ID).Take(5).ToList();
+            return PartialView(dgr);
+        }
+        public PartialViewResult Section1(int id, int sayfa = 1)
+        {
+            var deger = c.Yorumlars.Where(x => x.Tamirci.ID == id && x.IsDeleted == false && x.control == true).OrderByDescending(x => x.ID).ToList().ToPagedList(sayfa, 1);
+            return PartialView(deger);
+        }
+        [HttpGet]
+        public PartialViewResult Yorumekle(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult Yorumekle(Yorumlar a)
+        {
+            if (a.Yorumİcerik != null)
+            {
+                a.Tamirciid = a.Tamirciid;
+                a.control = false;
+                a.IsDeleted = false;
+                a.Aktiflik = false;
+                c.Yorumlars.Add(a);
+                c.SaveChanges();
+            }
+            else
+            {
+
+            }
+            return PartialView();
+        }
         [HttpGet]
         public ActionResult TamirciBaşvuru()
         {
             KategoriViewModel model = new KategoriViewModel();
-            List<Kategori> stkurumlistesi = c.Kategoris.ToList();
+            List<Kategori> stkurumlistesi = c.Kategoris.Where(x => x.IsDeleted == false).ToList();
             model.Kategorilist = (List<SelectListItem>)(from s in stkurumlistesi
                                                         select new SelectListItem
                                                         {
@@ -80,50 +174,16 @@ namespace Tamirci.Controllers
                                                         }).ToList();
             model.Kategorilist.Insert(0, new SelectListItem { Text = "Seçiniz", Value = " ", Selected = true });
             return View(model);
-
-        }
-        public PartialViewResult İlİlçe()
-        {
-            İlçeViewModel model = new İlçeViewModel();
-            List<İl> illiste = c.İls.ToList();
-            model.illist = (List<SelectListItem>)(from s in illiste
-                                                        select new SelectListItem
-                                                        {
-                                                            Text = s.Name,
-                                                            Value = s.ID.ToString()
-                                                        }).ToList();
-      
-            model.illist.Insert(0, new SelectListItem { Text = "Seçiniz", Value = " ", Selected = true });
-            return PartialView(model);
-        }
-        public JsonResult GetInstitution(int id)
-        {
-            List<İlçe> ilçelist = c.İlçes.Where(x => x.İlid == id).ToList();
-            List<SelectListItem> dgr = (from i in c.İlçes.Where(x => x.İlid== id)
-                                        select new SelectListItem
-                                        {
-                                            Text = i.Name,
-                                            Value = i.ID.ToString()
-                                        }).ToList();
-            //var dgr = (from x in c.Institutions
-            //           join y in c.Parentinstitutions on x.Parentinstitution.Id equals y.Id
-            //           where x.Parentinstitution.Id == p
-            //           select new
-            //           {
-            //               Text = x.Name,
-            //               value = x.Id.ToString()
-            //           }).ToList();
-            return Json(dgr, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult TamirciBaşvuru(Tamirciler a, KategoriViewModel b,İlçeViewModel d)
+        public ActionResult TamirciBaşvuru(Tamirciler a, KategoriViewModel b, İlçeViewModel d)
         {
             a.Kategoriid = b.Kategoriid;
             var dgr1 = c.İls.Find(d.ilid);
-            a.Tamirci_İl = dgr1.Name;
+            a.Tamirci_İl = dgr1.Name.ToUpper();
             var dgr2 = c.İlçes.Find(d.ilçeid);
-            a.Tamirci_İlçe = dgr2.Name;
-            if (Request.Files.Count > 0  && Request.Files[0].ContentLength > 0)
+            a.Tamirci_İlçe = dgr2.Name.ToUpper();
+            if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
             {
                 string filename = Path.GetFileName(Request.Files[0].FileName);
                 string uzanti = Path.GetExtension(Request.Files[0].FileName);
@@ -165,41 +225,36 @@ namespace Tamirci.Controllers
             {
                 TempData["MailYollandı"] = "Mesaj gönderilemedi.Hata nedeni:" + ex.Message;
             }
-
-
-
-
-            return RedirectToAction("TamirciBaşvuru","Tamirciler");
+            return RedirectToAction("TamirciBaşvuru", "Tamirciler");
         }
-        public PartialViewResult Section1(int id)
+
+        public PartialViewResult İlİlçe()
         {
-          var deger = c.Yorumlars.Where(x => x.Tamirci.ID == id).OrderByDescending(x => x.ID).ToList();
-            return PartialView(deger);
+            İlçeViewModel model = new İlçeViewModel();
+            List<İl> illiste = c.İls.Where(x => x.IsDeleted == false).ToList();
+            model.illist = (List<SelectListItem>)(from s in illiste
+                                                        select new SelectListItem
+                                                        {
+                                                            Text = s.Name,
+                                                            Value = s.ID.ToString()
+                                                        }).ToList();
+      
+            model.illist.Insert(0, new SelectListItem { Text = "Seçiniz", Value = " ", Selected = true });
+            return PartialView(model);
         }
-        [HttpGet]
-        public PartialViewResult Yorumekle(int id)
+        public JsonResult GetInstitution(int id)
         {
-            ViewBag.deger = id;
-            return PartialView();
+            List<İlçe> ilçelist = c.İlçes.Where(x => x.İlid == id && x.IsDeleted==false).ToList();
+            List<SelectListItem> dgr = (from i in c.İlçes.Where(x => x.İlid== id && x.IsDeleted==false)
+                                        select new SelectListItem
+                                        {
+                                            Text = i.Name,
+                                            Value = i.ID.ToString()
+                                        }).ToList();
+            return Json(dgr, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public PartialViewResult Yorumekle(Yorumlar a)
-        {
-            if (a.Yorumİcerik != null)
-            {
-                a.Tamirciid = a.Tamirciid;
-                a.control = false;
-                a.IsDeleted = false;
-                a.Aktiflik = false;
-                c.Yorumlars.Add(a);
-                c.SaveChanges();
-            }
-            else
-            {
-
-            }
-            return PartialView();
-        }
+       
+       
 
        
     }

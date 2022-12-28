@@ -1,0 +1,15 @@
+﻿@using Tamirci.Models
+@model List<Tamirciler>
+
+@{
+    int a = 0;
+    foreach (var x in Model)
+    {
+        a = a + x.Click;
+
+    }
+    <div class="d-none d-md-block">
+        <p class="statistics-title">Toplam Tıklanma</p>
+        <h3 class="rate-percentage">@a</h3>
+    </div>
+}

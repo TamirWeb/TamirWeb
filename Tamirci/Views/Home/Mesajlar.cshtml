@@ -1,0 +1,56 @@
+﻿@using Tamirci.Models
+@model List<Mesajlar>
+<section>
+    <div class="container" data-aos="fade-up">
+        <div class="row" style="margin-top:110px;">
+            <div class="col-12 text-center mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2 class="display-4">Gelen Mesajlar</h2>
+                        <p>Bizlere gönderdiğiniz birbirinizden değerli mesajlarınız</p>
+                    </div>
+                </div>
+            </div>
+            @foreach (var x in Model)
+            {
+                <div class="col-lg-4 text-center mb-5">
+                    <img src="assets/img/person-1.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+                    <h4>@x.MesajGonderenAdSoyad</h4>
+                    <span class="d-block mb-3 text-uppercase">@x.Mesajbaslik</span>
+                    <p>@x.Mesaj</p>
+                </div>
+            }
+
+            @*<div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-2.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Wade Warren</h4>
+            <span class="d-block mb-3 text-uppercase">Founder, VP</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+        </div>
+        <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-3.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Jane Cooper</h4>
+            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+        </div>
+        <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-4.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Cameron Williamson</h4>
+            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+        </div>
+        <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-5.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Cameron Williamson</h4>
+            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+        </div>
+        <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-6.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Cameron Williamson</h4>
+            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+        </div>*@
+        </div>
+    </div>
+</section>

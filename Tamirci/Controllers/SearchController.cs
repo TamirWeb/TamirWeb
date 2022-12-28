@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,17 +12,15 @@ namespace Tamirci.Controllers
     {
         Context c = new Context();
 
-            public ActionResult Ara(String k)
+            public ActionResult Ara(String k,int sayfa=1)
             {
             var search= k.ToUpper();
-
-                var deger = c.Tamircilers.ToList();
-
                 if (!string.IsNullOrEmpty(k))
                 {
-                    deger = deger.Where(a => a.TamirciAdı.Contains(search) && a.Tamirci_Aktiflik == true).ToList();
-                }
+                  var deger = c.Tamircilers.Where(a => a.TamirciAdı.Contains(search) && a.Tamirci_Aktiflik == true).ToList().ToPagedList(sayfa, 8); ;
                 return View(deger);
+               }
+                return View();
 
             }
         }

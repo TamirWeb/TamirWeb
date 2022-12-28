@@ -1,0 +1,22 @@
+﻿@model Tamirci.Models.ToDo
+@{
+    ViewBag.Title = "AddToDo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Yeni Görev Ekle</h3>
+
+            @using (Html.BeginForm("AddToDo", "Admin", FormMethod.Post))
+            {
+                <label for="Baslik">Görev Açıklaması</label> <br />
+                @Html.TextBoxFor(x => x.Explonation, new { @class = "form-control" })
+                <br />
+                <button class="btn btn-outline-primary"><i class="mdi mdi-content-save"></i>&nbsp;&nbsp;Ekle</button>
+            }
+
+        </div>
+    </div>
+</div>
