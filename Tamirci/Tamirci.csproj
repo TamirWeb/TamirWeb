@@ -2331,8 +2331,6 @@
     <Content Include="Views\Tamirciler\İlİlçe.cshtml" />
     <Content Include="Views\Admin\Kategori.cshtml" />
     <Content Include="Views\About\Puanlama2.cshtml" />
-    <Content Include="Views\Tamirciler\Puanlama1.cshtml" />
-    <Content Include="Views\Tamirciler\Puanlama2.cshtml" />
     <Content Include="Views\Admin\Kategoriler.cshtml" />
     <Content Include="Views\Admin\İl.cshtml" />
     <Content Include="Views\Admin\İlçe.cshtml" />
