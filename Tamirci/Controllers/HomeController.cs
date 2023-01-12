@@ -87,7 +87,29 @@ namespace Tamirci.Controllers
         {
             return View();
         }
-
+        public PartialViewResult TotalYorum()
+        {
+            var dgr = c.Yorumlars.Where(x => x.IsDeleted == false && x.Aktiflik == true && x.control == true).ToList();
+            return PartialView(dgr);
+        }
+        [Authorize]
+        public PartialViewResult TotalBaşvuru()
+        {
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.control == false && x.Tamirci_Aktiflik == false).ToList();
+            return PartialView(dgr);
+        }
+        [Authorize]
+        public PartialViewResult TotalTamirci()
+        {
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).ToList();
+            return PartialView(dgr);
+        }
+        [Authorize]
+        public PartialViewResult TotalTıklanma()
+        {
+            var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true && x.control == true).ToList();
+            return PartialView(dgr);
+        }
 
     }
 }

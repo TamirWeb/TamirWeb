@@ -41,31 +41,19 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="employees">
-                        <p class="counter-count">200</p>
-                        <p class="employee-p">Tamirci</p>
-                    </div>
+                    @Html.Action("TotalTamirci2", "Home")
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="customer">
-                        <p class="counter-count">100</p>
-                        <p class="customer-p">Yorum</p>
-                    </div>
+                    @Html.Action("TotalYorum", "Home")
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="design">
-                        <p class="counter-count">200</p>
-                        <p class="design-p">Puanlama</p>
-                    </div>
+                    @Html.Action("TotalBaşvuru", "Home")
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="order">
-                        <p class="counter-count">1000</p>
-                        <p class="order-p">Tıklanma</p>
-                    </div>
+                    @Html.Action("TotalTıklanma", "Home")
                 </div>
             </div>
         </div>

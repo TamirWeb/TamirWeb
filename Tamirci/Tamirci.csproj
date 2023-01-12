@@ -2312,7 +2312,6 @@
     <Content Include="Views\Home\Section1.cshtml" />
     <Content Include="Views\Home\Section2.cshtml" />
     <Content Include="Views\Home\Section2_1.cshtml" />
-    <Content Include="Views\Home\Section6.cshtml" />
     <Content Include="Views\Home\Section4.cshtml" />
     <Content Include="Views\Home\Section5.cshtml" />
     <Content Include="Views\Home\Section7.cshtml" />
@@ -2377,6 +2376,10 @@
     <Content Include="Views\Tamirciler\SonEklenenYorum.cshtml" />
     <Content Include="Views\Tamirciler\SonMesajlar.cshtml" />
     <Content Include="Views\Home\Mesajlar.cshtml" />
+    <Content Include="Views\Home\TotalBaşvuru.cshtml" />
+    <Content Include="Views\Home\TotalYorum.cshtml" />
+    <Content Include="Views\Home\TotalTıklanma.cshtml" />
+    <Content Include="Views\Home\TotalTamirci.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

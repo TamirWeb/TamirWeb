@@ -132,9 +132,9 @@ namespace Tamirci.Controllers
             var dgr = c.Tamircilers.Where(x => x.IsDeleted == false && x.Tamirci_Aktiflik == true).OrderByDescending(x => x.ID).Take(5).ToList();
             return PartialView(dgr);
         }
-        public PartialViewResult Section1(int id, int sayfa = 1)
+        public PartialViewResult Section1(int id)
         {
-            var deger = c.Yorumlars.Where(x => x.Tamirci.ID == id && x.IsDeleted == false && x.control == true).OrderByDescending(x => x.ID).ToList().ToPagedList(sayfa, 1);
+            var deger = c.Yorumlars.Where(x => x.Tamirci.ID == id && x.IsDeleted == false && x.control == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(deger);
         }
         [HttpGet]

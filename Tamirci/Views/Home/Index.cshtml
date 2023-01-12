@@ -4,6 +4,40 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .counter {
+        background-color: #f7f5f5;
+        text-align: center;
+    }
+
+    .employees, .customer, .design, .order {
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+
+    .counter-count {
+        font-size: 18px;
+        background-color: #00b3e7;
+        border-radius: 50%;
+        position: relative;
+        color: #ffffff;
+        text-align: center;
+        line-height: 92px;
+        width: 92px;
+        height: 92px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        display: inline-block;
+    }
+
+    .employee-p, .customer-p, .order-p, .design-p {
+        font-size: 24px;
+        color: #000000;
+        line-height: 34px;
+    }
+</style>
 <main id="main">
     <!-- ======= Hero Slider Section ======= -->
     <section id="hero-slider" class="hero-slider">
@@ -16,7 +50,7 @@
                             @foreach (var x in Model)
                             {
                                 <div class="swiper-slide">
-                                   <a href="~/Tamirciler/TamirciDetail/@x.ID"> <img  src="@x.Tamirci_Fotoğraf" style="width:100%; height:420px;" class="img-lg d-flex align-items-end"</a>
+                                    <a href="~/Tamirciler/TamirciDetail/@x.ID"> <img src="@x.Tamirci_Fotoğraf" style="width:100%; height:420px;" class="img-lg d-flex align-items-end"</a>
                                     <div class="img-bg-inner">
                                         <h2>@x.TamirciAdı</h2>
                                         <p>@x.Tamirci_Tanım.Substring(0, 10)....</p>
@@ -38,11 +72,46 @@
             </div>
         </div>
     </section><!-- End Hero Slider Section -->
-
     <!-- ======= Post Grid Section ======= -->
     @Html.Action("Section1", "Home")
-    @Html.Action("Section2", "Home")
+    <section id="team" class="team section-bg">
+        <div class="counter">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        @Html.Action("TotalTamirci", "Home")
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        @Html.Action("TotalYorum", "Home")
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        @Html.Action("TotalBaşvuru", "Home")
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        @Html.Action("TotalTıklanma", "Home")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     @Html.Action("Section5", "Home")
     @Html.Action("Section4", "Home")
-    @Html.Action("Section6", "Home")
     @*@Html.Action("Section7", "Home")*@
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+    $('.counter-count').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 5000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+    </script>

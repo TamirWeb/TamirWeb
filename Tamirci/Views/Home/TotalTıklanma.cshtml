@@ -1,0 +1,14 @@
+﻿@using Tamirci.Models
+@model List<Tamirciler>
+@{
+    int a = 0;
+    foreach (var x in Model)
+    {
+        a = a + x.Click;
+
+    }
+    <div class="employees">
+        <p class="counter-count">@a</p>
+        <p class="employee-p">Tıklanma</p>
+    </div>
+}
